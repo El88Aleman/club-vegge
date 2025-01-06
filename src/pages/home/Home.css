@@ -1,0 +1,98 @@
+.containerFirst {
+  display: flex;
+}
+.imgHomeClubVegge {
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px;
+}
+.iconsHome {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  margin: 20px;
+  position: relative;
+}
+.count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #a8f0c8;
+  color: black;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+.burbujaChat {
+  width: 80%; /* Cambia a un ancho ajustado automáticamente según el contenido */
+  height: auto;
+  padding: 15px; /* Espaciado interno */
+  background-color: #369a63; /* Fondo verde claro */
+  color: white; /* Texto en blanco */
+  font-size: 12px; /* Tamaño del texto */
+  line-height: 1.5; /* Espaciado entre líneas */
+  border-radius: 10px; /* Bordes redondeados */
+  position: relative; /* Necesario para posicionar el pinche */
+  margin: 20px auto; /* Centrado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  text-align: center;
+}
+.textBurbuja {
+  font-family: "Sansation-Light";
+  font-size: 18px;
+}
+
+.pinche {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px; /* Triángulo */
+  border-color: #369a63 transparent transparent transparent; /* Colores del triángulo */
+  position: absolute;
+  bottom: -8px; /* Coloca el triángulo fuera de la burbuja */
+  left: 90%; /* Centrado horizontalmente */
+  transform: translateX(
+    -50%
+  ); /* Ajusta para que quede perfectamente centrado */
+}
+.containerMembresia {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+.textMembresia {
+  font-family: "Sansation-Light";
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.containerCompras {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.containerBolson,
+.containerVerduras,
+.containerFrutas {
+  text-align: center;
+}
+@font-face {
+  font-family: "Sansation-Light";
+  src: url(../../assets/tipograpic/Sansation_Light.ttf);
+}
+@font-face {
+  font-family: "Sansation-Regular";
+  src: url(../../assets/tipograpic/Sansation_Regular.ttf);
+}

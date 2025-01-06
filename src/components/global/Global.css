@@ -1,0 +1,74 @@
+.inputControl:focus {
+  outline: none; /* Elimina el borde azul */
+  box-shadow: none; /* Elimina la sombra */
+  border-color: #333; /* Opcional: elimina el borde */
+}
+.inputControl {
+  font-family: "Sansation-light";
+  margin-bottom: 10px;
+}
+.inputLabel {
+  font-family: "Sansation-Regular";
+}
+.containerCheckOut {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.imgClubVegge {
+  margin-top: 40px;
+}
+.containerForm {
+  width: 70%;
+  margin: 30px;
+}
+.containerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.textoCheckOut {
+  font-family: "Sansation-light";
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+}
+.button {
+  min-width: 30%;
+  font-family: "Sansation-Regular";
+}
+.buttonComprar {
+  background-color: #369a63;
+  color: white;
+  flex-wrap: nowrap;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  min-width: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  font-family: "Sansation-Regular";
+  box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.9);
+  margin: 20px;
+}
+.buttonComprar:hover {
+  transform: scale(1.1);
+}
+@font-face {
+  font-family: "Sansation-Light";
+  src: url(../../assets/tipograpic/Sansation_Light.ttf);
+}
+@font-face {
+  font-family: "Sansation-Regular";
+  src: url(../../assets/tipograpic/Sansation_Regular.ttf);
+}

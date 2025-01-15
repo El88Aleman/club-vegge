@@ -1,26 +1,14 @@
-import {
-  initializeApp,
-  signInWithEmailAndPassword,
-  getAuth,
-} from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAmszuBN23FaF3hcez1K2mSz0nuYm2c0q8",
-  authDomain: "club-vegge.firebaseapp.com",
-  projectId: "club-vegge",
-  storageBucket: "club-vegge.firebasestorage.app",
-  messagingSenderId: "879209772776",
-  appId: "1:879209772776:web:1ad14c1f1ed4c3f0b53b5d",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE,
+  messagingSenderId: import.meta.env.VITE_MESSAGING,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-export const onSigIn = async ({ email, password }) => {
-  try {
-    const res = await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const db = getFirestore(app);

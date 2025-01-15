@@ -1,0 +1,34 @@
+.containerSearch {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  width: 80%;
+  height: auto;
+  position: relative;
+  margin: 30px;
+}
+.inputSearch {
+  width: 100%;
+  border: 2px solid #369a63;
+  border-radius: 5px;
+  color: #333;
+  padding: 10px;
+  padding-right: 30px;
+  outline: none;
+  font-family: "Sansation-light";
+}
+.buttonSearch {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #369a63;
+}
+@font-face {
+  font-family: "Sansation-light";
+  src: url(../../assets/tipograpic/Sansation_Light.ttf);
+}

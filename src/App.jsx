@@ -1,12 +1,14 @@
-import Home from "./pages/home/Home";
-import ItemDetailContainer from "./pages/itemDetail/ItemDetailContainer";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./router/AppRouter";
+import CartContextComponent from "./context/CartContext";
 
 function App() {
   return (
-    <>
-      <Home />
-      <ItemDetailContainer />
-    </>
+    <BrowserRouter>
+      <CartContextComponent>
+        <AppRouter />
+      </CartContextComponent>
+    </BrowserRouter>
   );
 }
 

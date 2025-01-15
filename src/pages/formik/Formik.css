@@ -1,0 +1,33 @@
+.formFormik {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 30px;
+}
+.inputField .MuiOutlinedInput-root fieldset {
+  border-color: #369a63; /* Color del borde cuando no está seleccionado */
+}
+
+.inputField .MuiOutlinedInput-root:hover fieldset {
+  border-color: #2c7a4b; /* Color del borde al pasar el ratón */
+}
+
+.inputField .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #369a63; /* Color del borde cuando está seleccionado */
+}
+
+.inputField .MuiInputLabel-root {
+  color: #369a63; /* Color del label */
+  font-family: Sansation-light; /* Tipografía personalizada */
+}
+
+.inputField .MuiInputLabel-root.Mui-focused {
+  color: #369a63; /* Color del label cuando está enfocado */
+}
+
+.inputField .MuiInputBase-input {
+  color: black; /* Color del texto */
+  font-family: Sansation-light; /* Tipografía personalizada */
+}

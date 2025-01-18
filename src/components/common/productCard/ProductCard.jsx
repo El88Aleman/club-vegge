@@ -14,7 +14,7 @@ const ProductCard = ({ item, agregarAlCarrito, getQuantityById }) => {
         stock={item.stock}
         agregarAlCarrito={(cantidad) => agregarAlCarrito(item, cantidad)}
         cantidadEnCarrito={getQuantityById(item.id)}
-        price={item.price}
+        unit_price={item.unit_price}
       />
     </div>
   );

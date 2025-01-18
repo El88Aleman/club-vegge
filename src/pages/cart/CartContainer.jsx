@@ -63,7 +63,7 @@ const CartContainer = () => {
             <img src={elemento.img} height="70px" width="70px" alt="" />
             <p className="textoCheckOut">{elemento.title}</p>
             <p className="textoCheckOut">{elemento.quantity} Kg</p>
-            <p className="textoCheckOut">${elemento.price}</p>
+            <p className="textoCheckOut">${elemento.unit_price}</p>
             <button className="button" onClick={() => deleteById(elemento.id)}>
               ELIMINAR
             </button>

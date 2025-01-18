@@ -5,7 +5,7 @@ const CounterContainer = ({
   agregarAlCarrito,
   stock,
   cantidadEnCarrito = 0.5,
-  price,
+  unit_price,
 }) => {
   const { counter, sumar, restar } = useCounter(cantidadEnCarrito, stock);
   return (
@@ -16,7 +16,7 @@ const CounterContainer = ({
         restar={restar}
         agregarAlCarrito={agregarAlCarrito}
         stock={stock}
-        price={price}
+        unit_price={unit_price}
       />
     </>
   );

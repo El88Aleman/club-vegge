@@ -30,7 +30,7 @@ const Formik = () => {
   const [preferenceId, setPreferenceId] = useState(null);
   const { user, fetchOrders } = useContext(AuthContext);
 
-  initMercadoPago(import.meta.VITE_MERCADOPAGO_PUBLIC_KEY, {
+  initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY, {
     locale: "es-AR",
   });
   const createPreference = async () => {

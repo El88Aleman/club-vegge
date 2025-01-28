@@ -59,6 +59,7 @@ const Formik = () => {
     const id = await createPreference();
     if (id) {
       setPreferenceId(id);
+      clearCart();
     }
   };
   const navigate = useNavigate();

@@ -147,7 +147,7 @@ const Formik = () => {
   });
   return (
     <>
-      {preferenceId && selectedPayment === "MercadoPago" ? (
+      {preferenceId ? (
         <div>
           <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
         </div>

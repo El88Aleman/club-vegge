@@ -49,7 +49,6 @@ const Formik = () => {
           shipment_cost: 0,
         }
       );
-      console.log("Response from backend:", response.data);
       const { id } = response.data;
       return id;
     } catch (error) {
@@ -59,8 +58,8 @@ const Formik = () => {
   const handleBuy = async () => {
     const id = await createPreference();
     if (id) {
-      console.log("Preference ID:", id);
       setPreferenceId(id);
+      clearCart();
     }
   };
   const navigate = useNavigate();
@@ -153,7 +152,6 @@ const Formik = () => {
       {preferenceId && selectedPayment === "MercadoPago" ? (
         <div>
           <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
-          {clearCart()}
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="formFormik">

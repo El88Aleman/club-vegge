@@ -94,7 +94,7 @@ const Formik = () => {
           });
         });
         await fetchOrders();
-        clearCart();
+
         if (selectedPayment === "Efectivo") {
           Swal.fire({
             title: "Compra lograda exitosamente!",
@@ -107,11 +107,13 @@ const Formik = () => {
               confirmButton: "swal2-confirm-button-custom",
             },
           }).then(() => {
+            clearCart();
             navigate("/home");
           });
         } else if (selectedPayment === "MercadoPago") {
           await handleBuy();
         } else if (selectedPayment === "Transferencia") {
+          clearCart();
           navigate("/transferencia");
         }
       } catch (error) {

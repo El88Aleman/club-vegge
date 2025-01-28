@@ -146,102 +146,105 @@ const Formik = () => {
   });
   return (
     <>
-      <form onSubmit={handleSubmit} className="formFormik">
-        <TextField
-          id="outlined-basic"
-          label="Nombre"
-          variant="outlined"
-          name="nombre"
-          onChange={handleChange}
-          error={errors.nombre ? true : false}
-          helperText={errors.nombre}
-          className="inputField"
-          sx={{ minWidth: "70%" }}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Apellido"
-          variant="outlined"
-          name="apellido"
-          onChange={handleChange}
-          error={errors.apellido ? true : false}
-          helperText={errors.apellido}
-          className="inputField"
-          sx={{ minWidth: "70%" }}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Dirección"
-          variant="outlined"
-          name="direccion"
-          onChange={handleChange}
-          error={errors.direccion ? true : false}
-          helperText={errors.direccion}
-          className="inputField"
-          sx={{ minWidth: "70%" }}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Telefono"
-          variant="outlined"
-          name="telefono"
-          onChange={handleChange}
-          error={errors.telefono ? true : false}
-          helperText={errors.telefono}
-          className="inputField"
-          sx={{ minWidth: "70%" }}
-        />
-        <FormControl
-          variant="outlined"
-          className="inputField"
-          sx={{ minWidth: "70%" }}
-        >
-          <InputLabel id="payment-method-label">Método de Pago</InputLabel>
-          <Select
-            labelId="payment-method-label"
-            id="payment-method"
-            value={selectedPayment}
-            onChange={handlePaymentChange}
-            label="Método de Pago"
-          >
-            <MenuItem sx={{ fontFamily: "Sansation-light" }} value="Efectivo">
-              Efectivo
-            </MenuItem>
-            <MenuItem
-              onClick={handleBuy}
-              sx={{ fontFamily: "Sansation-light" }}
-              value="MercadoPago"
-            >
-              MercadoPago
-            </MenuItem>
-            <MenuItem
-              sx={{ fontFamily: "Sansation-light" }}
-              value="Transferencia"
-            >
-              Transferencia
-            </MenuItem>
-          </Select>
-        </FormControl>
-        <div className="containerButton">
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            disabled={!selectedPayment}
-            sx={{
-              backgroundColor: "#369a63",
-              fontFamily: "Sansation-light",
-              "&:hover": {
-                backgroundColor: "#2c7a4b",
-              },
-            }}
-          >
-            REALIZAR PAGO
-          </Button>
+      {preferenceId && selectedPayment === "MercadoPago" ? (
+        <div>
+          <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
         </div>
-      </form>
-      {preferenceId && selectedPayment === "MercadoPago" && (
-        <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
+      ) : (
+        <form onSubmit={handleSubmit} className="formFormik">
+          <TextField
+            id="outlined-basic"
+            label="Nombre"
+            variant="outlined"
+            name="nombre"
+            onChange={handleChange}
+            error={errors.nombre ? true : false}
+            helperText={errors.nombre}
+            className="inputField"
+            sx={{ minWidth: "70%" }}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Apellido"
+            variant="outlined"
+            name="apellido"
+            onChange={handleChange}
+            error={errors.apellido ? true : false}
+            helperText={errors.apellido}
+            className="inputField"
+            sx={{ minWidth: "70%" }}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Dirección"
+            variant="outlined"
+            name="direccion"
+            onChange={handleChange}
+            error={errors.direccion ? true : false}
+            helperText={errors.direccion}
+            className="inputField"
+            sx={{ minWidth: "70%" }}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Telefono"
+            variant="outlined"
+            name="telefono"
+            onChange={handleChange}
+            error={errors.telefono ? true : false}
+            helperText={errors.telefono}
+            className="inputField"
+            sx={{ minWidth: "70%" }}
+          />
+          <FormControl
+            variant="outlined"
+            className="inputField"
+            sx={{ minWidth: "70%" }}
+          >
+            <InputLabel id="payment-method-label">Método de Pago</InputLabel>
+            <Select
+              labelId="payment-method-label"
+              id="payment-method"
+              value={selectedPayment}
+              onChange={handlePaymentChange}
+              label="Método de Pago"
+            >
+              <MenuItem sx={{ fontFamily: "Sansation-light" }} value="Efectivo">
+                Efectivo
+              </MenuItem>
+              <MenuItem
+                onClick={handleBuy}
+                sx={{ fontFamily: "Sansation-light" }}
+                value="MercadoPago"
+              >
+                MercadoPago
+              </MenuItem>
+              <MenuItem
+                sx={{ fontFamily: "Sansation-light" }}
+                value="Transferencia"
+              >
+                Transferencia
+              </MenuItem>
+            </Select>
+          </FormControl>
+          <div className="containerButton">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              disabled={!selectedPayment}
+              sx={{
+                backgroundColor: "#369a63",
+                fontFamily: "Sansation-light",
+                "&:hover": {
+                  backgroundColor: "#2c7a4b",
+                },
+              }}
+            >
+              REALIZAR PAGO
+            </Button>
+          </div>
+        </form>
       )}
     </>
   );

@@ -59,6 +59,7 @@ const Formik = () => {
   const handleBuy = async () => {
     const id = await createPreference();
     if (id) {
+      console.log("Preference ID:", id);
       setPreferenceId(id);
     }
   };
@@ -92,8 +93,8 @@ const Formik = () => {
             stock: elemento.stock - elemento.quantity,
           });
         });
-
         await fetchOrders();
+        clearCart();
         if (selectedPayment === "Efectivo") {
           Swal.fire({
             title: "Compra lograda exitosamente!",
@@ -106,13 +107,11 @@ const Formik = () => {
               confirmButton: "swal2-confirm-button-custom",
             },
           }).then(() => {
-            clearCart();
             navigate("/home");
           });
         } else if (selectedPayment === "MercadoPago") {
           await handleBuy();
         } else if (selectedPayment === "Transferencia") {
-          clearCart();
           navigate("/transferencia");
         }
       } catch (error) {

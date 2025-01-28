@@ -26,19 +26,24 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const ProductList = ({ products }) => {
+const ProductList = ({ products, setIsChange }) => {
   const [open, setOpen] = useState(false);
-  const editProduct = (id) => {};
+  const [productSelected, setProductSelected] = useState(null);
   const deleteProduct = (id) => {
     deleteDoc(doc(db, "products", id));
+    setIsChange(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+  const handleOpen = (product) => {
+    setProductSelected(product);
+    setOpen(true);
+  };
   return (
     <div>
       <Button
-        onClick={() => setOpen(true)}
+        onClick={() => handleOpen(null)}
         variant="contained"
         color="primary"
         type="submit"
@@ -56,12 +61,12 @@ const ProductList = ({ products }) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="right">Titulo</TableCell>
-              <TableCell align="right">Precio</TableCell>
-              <TableCell align="right">Stock</TableCell>
-              <TableCell align="right">Imagen</TableCell>
-              <TableCell align="right">Categoria</TableCell>
-              <TableCell align="right">Acciones</TableCell>
+              <TableCell align="center">Titulo</TableCell>
+              <TableCell align="center">Precio</TableCell>
+              <TableCell align="center">Stock</TableCell>
+              <TableCell align="center">Imagen</TableCell>
+              <TableCell align="center">Categoria</TableCell>
+              <TableCell align="center">Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -70,16 +75,10 @@ const ProductList = ({ products }) => {
                 key={product.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  {product.title}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {product.unit_price}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {product.stock}
-                </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell align="center">{product.title}</TableCell>
+                <TableCell align="center">{product.unit_price}</TableCell>
+                <TableCell align="center">{product.stock}</TableCell>
+                <TableCell align="center">
                   <img
                     src={product.img}
                     height={product.height}
@@ -87,11 +86,9 @@ const ProductList = ({ products }) => {
                     alt="imagen dashboard"
                   />
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {product.category}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  <IconButton onClick={() => editProduct(product.id)}>
+                <TableCell align="center">{product.category}</TableCell>
+                <TableCell align="center">
+                  <IconButton onClick={() => handleOpen(product)}>
                     <MdEdit size={25} color="#369a63" />
                   </IconButton>
                   <IconButton onClick={() => deleteProduct(product.id)}>
@@ -110,7 +107,12 @@ const ProductList = ({ products }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ProductsForm />
+          <ProductsForm
+            handleClose={handleClose}
+            setIsChange={setIsChange}
+            productSelected={productSelected}
+            setProductSelected={setProductSelected}
+          />
         </Box>
       </Modal>
     </div>

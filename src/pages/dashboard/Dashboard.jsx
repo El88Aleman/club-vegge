@@ -62,7 +62,7 @@ const Dashboard = () => {
           </Link>
         </div>
       </div>
-      <ProductList products={products} />
+      <ProductList products={products} setIsChange={setIsChange} />
     </>
   );
 };

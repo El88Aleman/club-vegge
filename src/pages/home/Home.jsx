@@ -31,6 +31,7 @@ const Home = () => {
               alt="Bolson de Membresia"
               height="300px"
               width="300px"
+              className="imgBolson"
             />
             <button className="button">COMPRAR BOLSON INDIVIDUAL</button>
           </div>
@@ -38,10 +39,11 @@ const Home = () => {
         <Link to="/category/verduras">
           <div className="containerVerduras">
             <img
-              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737937712/Club%20Vegge/rdqcgpd8fzlwvcp4k55u.png"
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1738086649/Club%20Vegge/cjnz1iazlmxtfmib1zib.png"
               alt="Verduras Individuales"
-              height="250px"
+              height="150px"
               width="300px"
+              className="imgVerduras"
             />
             <button className="button">COMPRAR VERDURAS</button>
           </div>
@@ -49,10 +51,11 @@ const Home = () => {
         <Link to="/category/frutas">
           <div className="containerFrutas">
             <img
-              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737937712/Club%20Vegge/rdqcgpd8fzlwvcp4k55u.png"
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1738087074/Club%20Vegge/yfinjemj1fnmvsoxzd3l.png"
               alt="Frutas Individuales"
-              height="250px"
+              height="175px"
               width="300px"
+              className="imgFrutas"
             />
             <button className="button">COMPRAR FRUTAS</button>
           </div>

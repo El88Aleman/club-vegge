@@ -1,55 +1,106 @@
 import { Button, TextField } from "@mui/material";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import { useState } from "react";
+import { db } from "../../firebaseConfig";
 
-const ProductsForm = () => {
+const ProductsForm = ({
+  handleClose,
+  setIsChange,
+  productSelected,
+  setProductSelected,
+}) => {
+  const [newProduct, setNewProduct] = useState({
+    title: "",
+    unit_price: 0,
+    stock: 0,
+    category: "",
+  });
+  const handleChange = (e) => {
+    if (productSelected) {
+      setProductSelected({
+        ...productSelected,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+    }
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const productsCollection = collection(db, "products");
+    if (productSelected) {
+      let obj = {
+        ...productSelected,
+        unit_price: +productSelected.unit_price,
+        stock: +productSelected.stock,
+      };
+      updateDoc(doc(productsCollection, productSelected.id), obj).then(() => {
+        setIsChange(true);
+        handleClose();
+      });
+    } else {
+      let obj = {
+        ...newProduct,
+        unit_price: +newProduct.unit_price,
+        stock: +newProduct.stock,
+      };
+      addDoc(productsCollection, obj).then(() => {
+        setIsChange(true);
+        handleClose();
+      });
+    }
+  };
   return (
     <>
-      <form>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
         <TextField
           id="outlined-basic"
           label="Nombre"
+          defaultValue={productSelected?.title}
           variant="outlined"
-          name="nombre"
+          name="title"
           className="inputField"
+          onChange={handleChange}
           sx={{ minWidth: "70%" }}
         />
         <TextField
           id="outlined-basic"
-          label="Nombre"
+          label="Precio"
+          defaultValue={productSelected?.unit_price}
           variant="outlined"
-          name="nombre"
+          name="unit_price"
           className="inputField"
+          onChange={handleChange}
           sx={{ minWidth: "70%" }}
         />
         <TextField
           id="outlined-basic"
-          label="Nombre"
+          label="Stock"
+          defaultValue={productSelected?.stock}
           variant="outlined"
-          name="nombre"
+          name="stock"
           className="inputField"
+          onChange={handleChange}
           sx={{ minWidth: "70%" }}
         />
         <TextField
           id="outlined-basic"
-          label="Nombre"
+          label="Categoria"
+          defaultValue={productSelected?.category}
           variant="outlined"
-          name="nombre"
+          name="category"
           className="inputField"
-          sx={{ minWidth: "70%" }}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Nombre"
-          variant="outlined"
-          name="nombre"
-          className="inputField"
-          sx={{ minWidth: "70%" }}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Nombre"
-          variant="outlined"
-          name="nombre"
-          className="inputField"
+          onChange={handleChange}
           sx={{ minWidth: "70%" }}
         />
         <Button
@@ -64,7 +115,7 @@ const ProductsForm = () => {
             },
           }}
         >
-          CREAR
+          {productSelected ? "MODIFICAR" : "CREAR"}
         </Button>
       </form>
     </>

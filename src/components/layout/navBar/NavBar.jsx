@@ -23,8 +23,8 @@ const NavBar = () => {
           <img
             src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737812866/Club%20Vegge/Club_Vegge_fbicie.png"
             alt="club vegge"
-            height="150px"
-            width="150px"
+            height="250px"
+            width="250px"
             className="imgHomeClubVegge"
           />
         </Link>

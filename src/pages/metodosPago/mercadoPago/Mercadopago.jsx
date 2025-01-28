@@ -3,7 +3,7 @@ const Mercadopago = ({ preferenceId }) => {
   return (
     <div>
       {preferenceId && (
-        <Wallet initialization={{ preferenceId, redirectMode: "blank" }} />
+        <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
       )}
     </div>
   );

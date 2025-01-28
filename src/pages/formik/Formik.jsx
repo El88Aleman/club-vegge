@@ -43,7 +43,7 @@ const Formik = () => {
     });
     try {
       let response = await axios.post(
-        "https://backend-club-vegge-32rz5ghfn-el88alemans-projects.vercel.app/create_preference",
+        "https://backend-club-vegge.vercel.app/create_preference",
         {
           items: newArray,
           shipment_cost: 0,

@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import "./UserOrders.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { Timestamp } from "firebase/firestore";
 const UserOrders = () => {
   const { myOrders, fetchOrders, deleteOrderById } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
@@ -35,7 +36,10 @@ const UserOrders = () => {
               <strong>Método de Pago:</strong> {order.paymentMethod}
             </p>
             <p>
-              <strong>Fecha:</strong> {order.date.toDate().toLocaleString()}
+              <strong>Fecha:</strong>{" "}
+              {order.date instanceof Timestamp
+                ? order.date.toDate().toLocaleString()
+                : new Date(order.date).toLocaleString()}
             </p>
             <div className="products-container">
               <p className="products-title">Productos:</p>

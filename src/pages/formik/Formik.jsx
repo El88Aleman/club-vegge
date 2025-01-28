@@ -92,7 +92,6 @@ const Formik = () => {
           });
         });
         await fetchOrders();
-        clearCart();
         if (selectedPayment === "Efectivo") {
           Swal.fire({
             title: "Compra lograda exitosamente!",
@@ -106,11 +105,13 @@ const Formik = () => {
             },
           }).then(() => {
             navigate("/home");
+            clearCart();
           });
         } else if (selectedPayment === "MercadoPago") {
           await handleBuy();
         } else if (selectedPayment === "Transferencia") {
           navigate("/transferencia");
+          clearCart();
         }
       } catch (error) {
         console.error("Error adding document: ", error);

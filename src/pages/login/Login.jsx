@@ -2,11 +2,15 @@ import "../../components/global/Global.css";
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "./Login.css";
-import { onSigIn } from "../../firebaseConfig";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { db, loginGoogle, logOut, onSigIn } from "../../firebaseConfig";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { collection, doc, getDoc } from "firebase/firestore";
+import { AuthContext } from "../../context/AuthContext";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
+  const { handleLogin, logoutContext } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleClickPassword = () => setShowPassword(!showPassword);
@@ -20,26 +24,56 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await onSigIn(userCredentials);
-      navigate("/dashboard");
+      const res = await onSigIn(userCredentials);
+      if (res.user) {
+        const userCollection = collection(db, "users");
+        const userRef = doc(userCollection, res.user.uid);
+        const userDoc = await getDoc(userRef);
+        let finalyUser = {
+          email: res.user.email,
+          rol: userDoc.data().rol,
+        };
+        handleLogin(finalyUser);
+        navigate("/home");
+      }
     } catch (error) {
       console.log(error);
     }
   };
-
+  const googleSingIn = async () => {
+    let res = await loginGoogle();
+    let finalyUser = {
+      email: res.user.email,
+      rol: "user",
+    };
+    handleLogin(finalyUser);
+    navigate("/home");
+  };
+  const handleLogout = () => {
+    logOut();
+    logoutContext();
+    navigate("/");
+  };
   return (
     <form className="containerLogin" onSubmit={handleSubmit}>
+      <img
+        src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737812866/Club%20Vegge/Club_Vegge_fbicie.png"
+        alt="club vegge"
+        height="200px"
+        width="200px"
+        className="imgHomeClubVegge"
+      />
       <TextField
-        id="outlined-basic"
+        id="email"
         label="Email"
         variant="outlined"
         name="email"
         onChange={handleChange}
         className="inputField"
-        sx={{ minWidth: "73%" }}
+        sx={{ minWidth: "70%" }}
       />
       <TextField
-        id="outlined-basic"
+        id="password"
         label="Contraseña"
         variant="outlined"
         name="password"
@@ -61,8 +95,18 @@ const Login = () => {
           ),
         }}
       />
+      <button className="googleButton" type="button" onClick={googleSingIn}>
+        <FaGoogle size={25} color="red" />
+        INICIAR SESION CON GOOGLE
+      </button>
       <button className="button" type="submit">
         INICIAR SESION
+      </button>
+      <Link to="/forgotPassword" className="linkButton">
+        OLVIDE MI CONTRASEÑA
+      </Link>
+      <button className="button" type="button" onClick={handleLogout}>
+        CERRAR SESION
       </button>
     </form>
   );

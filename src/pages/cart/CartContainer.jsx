@@ -51,7 +51,7 @@ const CartContainer = () => {
 
   useEffect(() => {
     if (cart.length === 0) {
-      navigate("/");
+      navigate("/home");
     }
   }, [cart, navigate]);
 

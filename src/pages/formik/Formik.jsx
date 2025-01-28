@@ -21,9 +21,48 @@ import {
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { initMercadoPago } from "@mercadopago/sdk-react";
 import "./Formik.css";
+import axios from "axios";
+import Mercadopago from "../metodosPago/mercadoPago/Mercadopago";
+import { AuthContext } from "../../context/AuthContext";
 const Formik = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
+  const [preferenceId, setPreferenceId] = useState(null);
+  const { user, fetchOrders } = useContext(AuthContext);
+
+  initMercadoPago(import.meta.VITE_MERCADOPAGO_PUBLIC_KEY, {
+    locale: "es-AR",
+  });
+  const createPreference = async () => {
+    let newArray = cart.map((product) => {
+      return {
+        title: product.title,
+        unit_price: product.unit_price,
+        quantity: product.quantity,
+      };
+    });
+    try {
+      let response = await axios.post(
+        "https://backend-club-vegge-32rz5ghfn-el88alemans-projects.vercel.app/create_preference",
+        {
+          items: newArray,
+          shipment_cost: 0,
+        }
+      );
+      console.log("Response from backend:", response.data);
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleBuy = async () => {
+    const id = await createPreference();
+    if (id) {
+      setPreferenceId(id);
+    }
+  };
   const navigate = useNavigate();
   let total = getTotalPrice();
   const [selectedPayment, setSelectedPayment] = useState("");
@@ -39,12 +78,13 @@ const Formik = () => {
     },
     onSubmit: async (data) => {
       let order = {
-        buyer: data,
+        buyer: { ...data, email: user.email },
         items: cart,
         total,
         paymentMethod: selectedPayment,
         date: serverTimestamp(),
       };
+      localStorage.setItem("order", JSON.stringify(order));
       let ordersCollections = collection(db, "orders");
       try {
         await addDoc(ordersCollections, order);
@@ -54,6 +94,7 @@ const Formik = () => {
           });
         });
         clearCart();
+        await fetchOrders();
         if (selectedPayment === "Efectivo") {
           Swal.fire({
             title: "Compra lograda exitosamente!",
@@ -66,10 +107,10 @@ const Formik = () => {
               confirmButton: "swal2-confirm-button-custom",
             },
           }).then(() => {
-            navigate("/");
+            navigate("/home");
           });
         } else if (selectedPayment === "MercadoPago") {
-          navigate("/mercadopago");
+          await handleBuy();
         } else if (selectedPayment === "Transferencia") {
           navigate("/transferencia");
         }
@@ -169,6 +210,7 @@ const Formik = () => {
               Efectivo
             </MenuItem>
             <MenuItem
+              onClick={handleBuy}
               sx={{ fontFamily: "Sansation-light" }}
               value="MercadoPago"
             >
@@ -200,6 +242,9 @@ const Formik = () => {
           </Button>
         </div>
       </form>
+      {preferenceId && selectedPayment === "MercadoPago" && (
+        <Mercadopago preferenceId={preferenceId} />
+      )}
     </>
   );
 };

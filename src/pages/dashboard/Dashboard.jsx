@@ -1,13 +1,36 @@
 import { Button } from "@mui/material";
 import "./Dashboard.css";
-import { logOut } from "../../firebaseConfig";
-import { useNavigate } from "react-router-dom";
+import { db, logOut } from "../../firebaseConfig";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import ProductList from "./ProductList";
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [isChange, setIsChange] = useState(false);
 
   const handleLogOut = async () => {
-    await logOut(navigate);
+    try {
+      await logOut(navigate);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
   };
+  useEffect(() => {
+    setIsChange(false);
+    let productsCollection = collection(db, "products");
+    getDocs(productsCollection).then((res) => {
+      const newArr = res.docs.map((product) => {
+        return {
+          ...product.data(),
+          id: product.id,
+        };
+      });
+      setProducts(newArr);
+    });
+  }, [isChange]);
 
   return (
     <>
@@ -16,7 +39,6 @@ const Dashboard = () => {
           <Button
             onClick={handleLogOut}
             variant="contained"
-            color="primary"
             type="submit"
             sx={{
               backgroundColor: "#369a63",
@@ -30,14 +52,17 @@ const Dashboard = () => {
           </Button>
         </div>
         <div className="imgClubVeggeDash">
-          <img
-            src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1735256424/Club%20Vegge/iwtctrnzsuuhjkodw4fq.png"
-            height="150"
-            width="150px"
-            alt=""
-          />
+          <Link to="/home">
+            <img
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737812866/Club%20Vegge/Club_Vegge_fbicie.png"
+              height="200px"
+              width="200px"
+              alt=""
+            />
+          </Link>
         </div>
       </div>
+      <ProductList products={products} />
     </>
   );
 };

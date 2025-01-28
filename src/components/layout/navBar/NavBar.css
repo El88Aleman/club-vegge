@@ -1,7 +1,59 @@
-.containerNavBar {
+.navContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #fff;
+  width: 100%;
+}
+.imgHomeClubVegge {
   align-items: center;
+  margin: 10px;
+}
+.iconsNav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
   margin: 20px;
+}
+.fixedIcons {
+  position: fixed;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fixedIcons {
+  position: fixed;
+  bottom: 20px; /* Ajusta este valor para mover los elementos más arriba */
+  right: 10px; /* Ajusta este valor si deseas mover los elementos más a la izquierda */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fixedIconContainer {
+  background-color: #a8f0c8; /* Fondo de la flecha */
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.arrow-up {
+  bottom: 20px; /* Ajusta este valor para mover la flecha más arriba */
+  right: 10px; /* Ajusta este valor si deseas mover la flecha más a la izquierda */
+}
+
+.cart-widget {
+  bottom: 470px; /* Ajusta este valor para mover el carrito más arriba */
+  right: 10px; /* Ajusta este valor si deseas mover el carrito más a la izquierda */
+}
+.fixedIconContainer {
+  background-color: #a8f0c8; /* Fondo de la flecha */
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  cursor: pointer;
 }

@@ -1,32 +1,10 @@
 import "./Home.css";
 import "../../components/global/Global.css";
-import "../../components/global/Global.css";
-import { BsPersonFillAdd } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import CartWidget from "../../components/common/cartWidget/CartWidget";
 
 const Home = () => {
   return (
-    <div>
-      <div className="containerFirst">
-        <img
-          src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1735256424/Club%20Vegge/iwtctrnzsuuhjkodw4fq.png"
-          alt="club vegge"
-          height="150px"
-          width="150px"
-          className="imgHomeClubVegge"
-        />
-        <div className="iconsHome">
-          <Link to={"/login"}>
-            <BsPersonFillAdd
-              size={25}
-              color="#369a63"
-              style={{ margin: "5px" }}
-            />
-          </Link>
-          <CartWidget />
-        </div>
-      </div>
+    <>
       <div className="burbujaChat">
         <p className="textBurbuja">
           Somos <strong>CLUB VEGGE</strong>! Un emprendimiento que lleva lo
@@ -49,10 +27,10 @@ const Home = () => {
         <Link to="/category/bolsones">
           <div className="containerBolson">
             <img
-              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1735566961/Club%20Vegge/na4rjc5j7jje0cxmartv.png"
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737937483/Club%20Vegge/u35yba0kcacq2wexlg9q.png"
               alt="Bolson de Membresia"
               height="300px"
-              width="250px"
+              width="300px"
             />
             <button className="button">COMPRAR BOLSON INDIVIDUAL</button>
           </div>
@@ -60,7 +38,7 @@ const Home = () => {
         <Link to="/category/verduras">
           <div className="containerVerduras">
             <img
-              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1735566961/Club%20Vegge/s0gqjmi0cskwg1u98csc.jpg"
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737937712/Club%20Vegge/rdqcgpd8fzlwvcp4k55u.png"
               alt="Verduras Individuales"
               height="250px"
               width="300px"
@@ -71,7 +49,7 @@ const Home = () => {
         <Link to="/category/frutas">
           <div className="containerFrutas">
             <img
-              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1735566960/Club%20Vegge/v6gff8cjfoc5ctkjr9uo.jpg"
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737937712/Club%20Vegge/rdqcgpd8fzlwvcp4k55u.png"
               alt="Frutas Individuales"
               height="250px"
               width="300px"
@@ -80,7 +58,7 @@ const Home = () => {
           </div>
         </Link>
       </div>
-    </div>
+    </>
   );
 };
 

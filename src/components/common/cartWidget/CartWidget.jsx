@@ -18,7 +18,7 @@ const CartWidget = () => {
           }}
           badgeContent={total}
         >
-          <FaCartPlus size={25} color="#369a63" style={{ margin: "5px" }} />
+          <FaCartPlus size={25} color="#369a63" />
         </Badge>
       </Link>
     </div>

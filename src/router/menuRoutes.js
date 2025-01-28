@@ -2,14 +2,14 @@ import CartContainer from "../pages/cart/CartContainer";
 import Formik from "../pages/formik/Formik";
 import Home from "../pages/home/Home";
 import ItemListContainer from "../pages/itemList/ItemListContainer";
-import Login from "../pages/login/Login";
 import Membresia from "../pages/membresia/Membresia";
 import Transferencia from "../pages/metodosPago/transferencia/Transferencia";
+import UserOrders from "../pages/userOrders/UserOrders";
 
 export const menuRoutes = [
   {
     id: "home",
-    path: "/",
+    path: "/home",
     Element: Home,
   },
   {
@@ -28,11 +28,6 @@ export const menuRoutes = [
     Element: Formik,
   },
   {
-    id: "login",
-    path: "/login",
-    Element: Login,
-  },
-  {
     id: "transferencia",
     path: "/transferencia",
     Element: Transferencia,
@@ -41,5 +36,10 @@ export const menuRoutes = [
     id: "membresia",
     path: "/membresia",
     Element: Membresia,
+  },
+  {
+    id: "userOrders",
+    path: "/userOrders",
+    Element: UserOrders,
   },
 ];

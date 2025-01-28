@@ -14,7 +14,7 @@ const Transferencia = () => {
       confirmButtonText: "Aceptar",
       confirmButtonColor: "#369a63",
     }).then(() => {
-      navigate("/");
+      navigate("/userOrders");
     });
   };
   return (

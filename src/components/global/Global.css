@@ -1,39 +1,48 @@
 .imgClubVegge {
   margin-top: 40px;
 }
+
 .containerForm {
   width: 70%;
   margin: 30px;
 }
+
 .checkout {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .textoCheckOut {
   font-family: "Sansation-light";
   font-size: 18px;
   margin: 10px;
   text-align: center;
 }
+
 .button {
   background-color: #369a63;
   color: white;
-  flex-wrap: nowrap;
   font-size: 14px;
   border: none;
   border-radius: 8px;
   padding: 15px;
-  min-width: 50%;
+  width: 100%;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
   text-align: center;
   font-family: "Sansation-Light";
-  box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
-  margin: 20px;
+  margin: 10px 0;
 }
+
+.button:hover {
+  transform: scale(1.05);
+  background-color: #2c7a4b;
+}
+
 .buttonSumarRestar {
   background-color: #369a63;
   color: white;
@@ -45,9 +54,64 @@
   font-family: "Sansation-Regular";
   margin: 10px;
 }
+
 .buttonComprar:hover {
   transform: scale(1.1);
 }
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #369a63;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  font-family: "Sansation-Light";
+  box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.googleButton:hover {
+  transform: scale(1.05);
+  background-color: #2c7a4b;
+}
+
+.googleButton svg {
+  margin-right: 10px;
+}
+
+.linkButton {
+  display: inline-block;
+  background-color: #369a63;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  font-family: "Sansation-Light";
+  box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+.linkButton:hover {
+  transform: scale(1.05);
+  background-color: #2c7a4b;
+}
+
 .custom-toast {
   min-width: 70%;
 }
@@ -56,6 +120,7 @@
   font-family: "Sansation-Light";
   src: url(../../assets/tipograpic/Sansation_Light.ttf);
 }
+
 @font-face {
   font-family: "Sansation-Regular";
   src: url(../../assets/tipograpic/Sansation_Regular.ttf);

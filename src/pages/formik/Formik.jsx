@@ -34,19 +34,13 @@ const Formik = () => {
     locale: "es-AR",
   });
   const createPreference = async () => {
-    let newArray = cart.map((product) => {
-      return {
-        title: product.title,
-        unit_price: product.unit_price,
-        quantity: product.quantity,
-      };
-    });
     try {
-      let response = await axios.post(
-        "https://backend-club-vegge-bg0x8emav-el88alemans-projects.vercel.app/create_preference",
+      const response = await axios.post(
+        "https://backend-club-vegge.vercel.app/create_preference",
         {
-          items: newArray,
-          shipment_cost: 0,
+          title: "bananita contenta",
+          quantity: 1,
+          unit_price: 100,
         }
       );
       const { id } = response.data;
@@ -148,7 +142,12 @@ const Formik = () => {
     <>
       {preferenceId && selectedPayment === "MercadoPago" ? (
         <div>
-          <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
+          <Wallet
+            initialization={{
+              preferenceId,
+              redirectMode: "self",
+            }}
+          />
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="formFormik">

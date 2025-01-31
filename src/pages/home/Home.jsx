@@ -9,8 +9,8 @@ const Home = () => {
         <p className="textBurbuja">
           Somos <strong>CLUB VEGGE</strong>! Un emprendimiento que lleva lo
           mejor de frutas y verduras directamente a la puerta de su casa
-          <strong>sin cargo de envio!</strong>🚪🚀 a partir de
-          <strong> $2500</strong>
+          <strong> sin cargo de envio </strong> a partir de
+          <strong> $2500</strong> 🚪🚀
         </p>
         <div className="pinche"></div>
       </div>

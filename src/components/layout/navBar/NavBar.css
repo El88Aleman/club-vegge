@@ -44,11 +44,16 @@
   bottom: 20px; /* Ajusta este valor para mover la flecha más arriba */
   right: 10px; /* Ajusta este valor si deseas mover la flecha más a la izquierda */
 }
+.whatsapp {
+  bottom: 245px; /* Ajusta este valor para mover el carrito más arriba */
+  right: 10px; /* Ajusta este valor si deseas mover el carrito más a la izquierda */
+}
 
 .cart-widget {
   bottom: 470px; /* Ajusta este valor para mover el carrito más arriba */
   right: 10px; /* Ajusta este valor si deseas mover el carrito más a la izquierda */
 }
+
 .fixedIconContainer {
   background-color: #a8f0c8; /* Fondo de la flecha */
   border-radius: 50%;

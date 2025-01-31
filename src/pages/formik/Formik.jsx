@@ -99,7 +99,7 @@ const Formik = () => {
               confirmButton: "swal2-confirm-button-custom",
             },
           }).then(() => {
-            navigate("/home");
+            navigate("/userOrders");
           });
         } else if (selectedPayment === "MercadoPago") {
           await handleBuy();

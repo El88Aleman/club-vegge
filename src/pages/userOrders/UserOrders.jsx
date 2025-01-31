@@ -25,7 +25,7 @@ const UserOrders = () => {
   };
   return (
     <div className="orders-container">
-      <h2>Mis Órdenes</h2>
+      <p className="titleOrders">Mis Órdenes</p>
       {myOrders.length > 0 ? (
         myOrders.map((order) => (
           <div key={order.id} className="order-card">

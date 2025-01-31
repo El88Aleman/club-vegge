@@ -1,14 +1,25 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./CartContainer.css";
+import "../../components/global/Global.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { MdRemove } from "react-icons/md";
+import { MdAdd } from "react-icons/md";
 
 const CartContainer = () => {
-  const { cart, clearCart, deleteById, getTotalPrice } =
+  const { cart, clearCart, deleteById, getTotalPrice, addToCart } =
     useContext(CartContext);
+  const [counters, setCounters] = useState({});
   let total = getTotalPrice();
   const navigate = useNavigate();
+  useEffect(() => {
+    const initialCounters = cart.reduce((acc, item) => {
+      acc[item.id] = item.quantity;
+      return acc;
+    }, {});
+    setCounters(initialCounters);
+  }, [cart]);
 
   let limpiar = () => {
     Swal.fire({
@@ -48,13 +59,26 @@ const CartContainer = () => {
       });
     }
   };
-
   useEffect(() => {
     if (cart.length === 0) {
       navigate("/home");
     }
   }, [cart, navigate]);
+  const handleAdd = (item) => {
+    const newQuantity = counters[item.id] + 0.5;
+    if (newQuantity <= item.stock) {
+      setCounters({ ...counters, [item.id]: newQuantity });
+      addToCart({ ...item, quantity: newQuantity });
+    }
+  };
 
+  const handleRemove = (item) => {
+    const newQuantity = counters[item.id] - 0.5;
+    if (newQuantity >= 0.5) {
+      setCounters({ ...counters, [item.id]: newQuantity });
+      addToCart({ ...item, quantity: newQuantity });
+    }
+  };
   return (
     <>
       {cart.map((elemento) => {
@@ -62,8 +86,32 @@ const CartContainer = () => {
           <div key={elemento.id} className="cartContainerTarjet">
             <img src={elemento.img} height="70px" width="70px" alt="" />
             <p className="textoCheckOut">{elemento.title}</p>
-            <p className="textoCheckOut">{elemento.quantity} Kg</p>
-            <p className="textoCheckOut">${elemento.unit_price}</p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <button
+                className="buttonSumarRestar"
+                disabled={counters[elemento.id] <= 0.5}
+                onClick={() => handleRemove(elemento)}
+              >
+                <MdRemove size={15} />
+              </button>
+              <p className="textoCheckOut">{counters[elemento.id]} KG</p>
+              <button
+                className="buttonSumarRestar"
+                disabled={counters[elemento.id] >= elemento.stock}
+                onClick={() => handleAdd(elemento)}
+              >
+                <MdAdd size={15} />
+              </button>
+            </div>
+            <p className="textoCheckOut">
+              ${elemento.unit_price * counters[elemento.id]}
+            </p>
             <button className="button" onClick={() => deleteById(elemento.id)}>
               ELIMINAR
             </button>

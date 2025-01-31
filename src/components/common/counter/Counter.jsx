@@ -34,7 +34,7 @@ const Counter = ({
           <MdAdd size={15} />
         </button>
       </div>
-      <p className="textoCheckOut">${unit_price}</p>
+      <p className="textoCheckOut">${unit_price * counter}</p>
       <button className="button" onClick={() => agregarAlCarrito(counter)}>
         AGREGAR AL CARRITO
       </button>

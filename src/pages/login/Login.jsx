@@ -59,8 +59,8 @@ const Login = () => {
       <img
         src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737812866/Club%20Vegge/Club_Vegge_fbicie.png"
         alt="club vegge"
-        height="200px"
-        width="200px"
+        height="250px"
+        width="250px"
         className="imgHomeClubVegge"
       />
       <TextField
@@ -70,7 +70,7 @@ const Login = () => {
         name="email"
         onChange={handleChange}
         className="inputField"
-        sx={{ minWidth: "70%" }}
+        sx={{ maxWidth: "80%" }}
       />
       <TextField
         id="password"
@@ -80,7 +80,7 @@ const Login = () => {
         type={showPassword ? "text" : "password"}
         onChange={handleChange}
         className="inputField"
-        sx={{ minWidth: "70%" }}
+        sx={{ maxWidth: "80%" }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

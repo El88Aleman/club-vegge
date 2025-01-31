@@ -1,0 +1,28 @@
+.containerFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.containerCopyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.copyright {
+  font-family: "Sansation Light";
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}
+.desarrolladoPor {
+  font-family: "Sansation light";
+  font-size: 16px;
+  margin-top: 10px;
+}
+@font-face {
+  font-family: "Sansation Light";
+  src: url(../../../assets/tipograpic/Sansation_Light.ttf);
+}

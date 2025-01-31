@@ -1,9 +1,10 @@
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { FaBagShopping } from "react-icons/fa6";
+import { IoLogoWhatsapp } from "react-icons/io";
 import "./NavBar.css";
 import "../../global/Global.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartWidget from "../../common/cartWidget/CartWidget";
 import { Badge } from "@mui/material";
 import { useContext } from "react";
@@ -54,9 +55,14 @@ const NavBar = () => {
           </Link>
         </div>
       </div>
-      <div className="fixedIcons" onClick={scrollToTop}>
-        <div className="fixedIconContainer arrow-up">
+      <div className="fixedIcons arrow-up" onClick={scrollToTop}>
+        <div className="fixedIconContainer ">
           <FaArrowUpLong size={25} color="#369a63" />
+        </div>
+      </div>
+      <div className="fixedIcons whatsapp">
+        <div className="fixedIconContainer ">
+          <IoLogoWhatsapp size={25} color="#369a63" />
         </div>
       </div>
       <div className="fixedIcons cart-widget">
@@ -64,7 +70,6 @@ const NavBar = () => {
           <CartWidget />
         </div>
       </div>
-      <Outlet />
     </div>
   );
 };

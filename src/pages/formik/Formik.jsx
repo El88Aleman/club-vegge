@@ -34,18 +34,12 @@ const Formik = () => {
   initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY, {
     locale: "es-AR",
   });
-  const createPreference = async (items, total) => {
+  const createPreference = async () => {
     try {
-      if (!Array.isArray(items)) {
-        throw new Error("Items should be an array");
-      }
       const response = await axios.post("/api/create_preference", {
-        items: items.map((item) => ({
-          title: item.title,
-          quantity: item.quantity,
-          unit_price: item.unit_price,
-        })),
-        total,
+        title: "bananita contenta",
+        quantity: 1,
+        unit_price: 100,
       });
       const { id } = response.data;
       return id;
@@ -53,12 +47,8 @@ const Formik = () => {
       console.log(error);
     }
   };
-  const handleBuy = async (items, total) => {
-    if (!Array.isArray(cart)) {
-      console.error("Items should be an array");
-      return;
-    }
-    const id = await createPreference(items, total);
+  const handleBuy = async () => {
+    const id = await createPreference();
     if (id) {
       setPreferenceId(id);
     }
@@ -77,10 +67,6 @@ const Formik = () => {
       telefono: "",
     },
     onSubmit: async (data) => {
-      if (!Array.isArray(cart)) {
-        console.error("Cart should be an array");
-        return;
-      }
       let order = {
         buyer: { ...data, email: user.email },
         items: cart,

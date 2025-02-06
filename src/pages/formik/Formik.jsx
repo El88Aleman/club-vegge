@@ -44,7 +44,7 @@ const Formik = () => {
     });
     try {
       const response = await axios.post(
-        "http://localhost3000/create_preference",
+        "https://backend-club-vegge.vercel.app/create_preference",
         {
           items: newArray,
         }

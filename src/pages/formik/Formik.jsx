@@ -36,6 +36,9 @@ const Formik = () => {
   });
   const createPreference = async (items, total) => {
     try {
+      if (!Array.isArray(items)) {
+        throw new Error("Items should be an array");
+      }
       const response = await axios.post("/api/create_preference", {
         items: items.map((item) => ({
           title: item.title,
@@ -51,6 +54,10 @@ const Formik = () => {
     }
   };
   const handleBuy = async (items, total) => {
+    if (!Array.isArray(items)) {
+      console.error("Items should be an array");
+      return;
+    }
     const id = await createPreference(items, total);
     if (id) {
       setPreferenceId(id);
@@ -70,6 +77,10 @@ const Formik = () => {
       telefono: "",
     },
     onSubmit: async (data) => {
+      if (!Array.isArray(cart)) {
+        console.error("Cart should be an array");
+        return;
+      }
       let order = {
         buyer: { ...data, email: user.email },
         items: cart,

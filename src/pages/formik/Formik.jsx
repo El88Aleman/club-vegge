@@ -34,24 +34,24 @@ const Formik = () => {
   initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY, {
     locale: "es-AR",
   });
-  const createPreference = async () => {
+  const createPreference = async (items, total) => {
     try {
-      const response = await axios.post(
-        "https://backend-club-vegge.vercel.app/create_preference",
-        {
-          title: "bananita contenta",
-          quantity: 1,
-          unit_price: 100,
-        }
-      );
+      const response = await axios.post("/api/create_preference", {
+        items: items.map((item) => ({
+          title: item.title,
+          quantity: item.quantity,
+          unit_price: item.unit_price,
+        })),
+        total,
+      });
       const { id } = response.data;
       return id;
     } catch (error) {
       console.log(error);
     }
   };
-  const handleBuy = async () => {
-    const id = await createPreference();
+  const handleBuy = async (items, total) => {
+    const id = await createPreference(items, total);
     if (id) {
       setPreferenceId(id);
     }

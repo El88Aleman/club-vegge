@@ -54,7 +54,7 @@ const Formik = () => {
     }
   };
   const handleBuy = async (items, total) => {
-    if (!Array.isArray(items)) {
+    if (!Array.isArray(cart)) {
       console.error("Items should be an array");
       return;
     }

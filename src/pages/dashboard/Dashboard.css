@@ -1,15 +1,11 @@
 .navDashboard {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .buttonCerrar {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   margin: 10px;
 }
 .imgClubVeggeDash {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 10px;
 }

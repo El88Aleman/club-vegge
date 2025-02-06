@@ -4,10 +4,19 @@ import useCounter from "../../utils/useCounter";
 const CounterContainer = ({
   agregarAlCarrito,
   stock,
-  cantidadEnCarrito = 0.5,
   unit_price,
+  categoryName,
 }) => {
-  const { counter, sumar, restar } = useCounter(cantidadEnCarrito, stock);
+  const increment =
+    categoryName === "bolsones" || categoryName === "paquetes" ? 1 : 0.5;
+  const initialQuantity = increment;
+  const unit =
+    categoryName === "bolsones" || categoryName === "paquetes" ? "" : " KG";
+  const { counter, sumar, restar } = useCounter(
+    initialQuantity,
+    stock,
+    increment
+  );
   return (
     <>
       <Counter
@@ -17,6 +26,8 @@ const CounterContainer = ({
         agregarAlCarrito={agregarAlCarrito}
         stock={stock}
         unit_price={unit_price}
+        increment={increment}
+        unit={unit}
       />
     </>
   );

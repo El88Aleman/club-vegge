@@ -8,6 +8,7 @@ const Counter = ({
   restar,
   sumar,
   unit_price,
+  unit,
 }) => {
   return (
     <div className="containerButtonCarrito">
@@ -25,7 +26,9 @@ const Counter = ({
         >
           <MdRemove size={15} />
         </button>
-        <p className="textoCheckOut">{counter} KG</p>
+        <p className="textoCheckOut">
+          {counter} {unit}
+        </p>
         <button
           className="buttonSumarRestar"
           disabled={counter >= stock}

@@ -50,6 +50,7 @@ const ProductList = ({ products, setIsChange }) => {
         sx={{
           backgroundColor: "#369a63",
           fontFamily: "Sansation-light",
+          margin: "10px",
           "&:hover": {
             backgroundColor: "#2c7a4b",
           },
@@ -61,12 +62,27 @@ const ProductList = ({ products, setIsChange }) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Titulo</TableCell>
-              <TableCell align="center">Precio</TableCell>
-              <TableCell align="center">Stock</TableCell>
-              <TableCell align="center">Imagen</TableCell>
-              <TableCell align="center">Categoria</TableCell>
-              <TableCell align="center">Acciones</TableCell>
+              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+                Titulo
+              </TableCell>
+              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+                Descripción
+              </TableCell>
+              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+                Precio
+              </TableCell>
+              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+                Stock
+              </TableCell>
+              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+                Imagen
+              </TableCell>
+              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+                Categoria
+              </TableCell>
+              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+                Acciones
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -75,10 +91,34 @@ const ProductList = ({ products, setIsChange }) => {
                 key={product.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="center">{product.title}</TableCell>
-                <TableCell align="center">{product.unit_price}</TableCell>
-                <TableCell align="center">{product.stock}</TableCell>
-                <TableCell align="center">
+                <TableCell
+                  align="center"
+                  sx={{ fontFamily: "Sansation-light" }}
+                >
+                  {product.title}
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ fontFamily: "Sansation-light" }}
+                >
+                  {product.description ? product.description : "-"}
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ fontFamily: "Sansation-light" }}
+                >
+                  {product.unit_price}
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ fontFamily: "Sansation-light" }}
+                >
+                  {product.stock}
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ fontFamily: "Sansation-light" }}
+                >
                   <img
                     src={product.img}
                     height={product.height}
@@ -86,7 +126,12 @@ const ProductList = ({ products, setIsChange }) => {
                     alt="imagen dashboard"
                   />
                 </TableCell>
-                <TableCell align="center">{product.category}</TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ fontFamily: "Sansation-light" }}
+                >
+                  {product.category}
+                </TableCell>
                 <TableCell align="center">
                   <IconButton onClick={() => handleOpen(product)}>
                     <MdEdit size={25} color="#369a63" />

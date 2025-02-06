@@ -25,6 +25,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import "./Formik.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import sendCustomEmail from "./sendCustomEmail";
 const Formik = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const [preferenceId, setPreferenceId] = useState(null);
@@ -87,6 +88,27 @@ const Formik = () => {
         });
         clearCart();
         await fetchOrders();
+        const formattedItems = order.items
+          .map(
+            (item) => `
+            <hr>
+          <p><strong>Título:</strong> ${item.title}</p>
+          <p><strong>Cantidad:</strong> ${item.quantity} KG</p>
+          <p><strong>Precio Unitario:</strong> $${item.unit_price}</p>
+          <hr>
+        `
+          )
+          .join("\n");
+        const emailBody = `
+          <p><strong>Nombre:</strong> ${order.buyer.nombre}</p>
+          <p><strong>Apellido:</strong> ${order.buyer.apellido}</p>
+          <p><strong>Dirección:</strong> ${order.buyer.direccion}</p>
+          <p><strong>Teléfono:</strong> ${order.buyer.telefono}</p>
+           <p><strong>Productos:</strong> ${formattedItems}</p>
+          <p><strong>Total:</strong> $${order.total}</p>
+          <p><strong>Método de Pago:</strong> ${order.paymentMethod}</p>
+        `;
+        sendCustomEmail(user.email, "Nuevo Pedido Recibido 🚀", emailBody);
         if (selectedPayment === "Efectivo") {
           Swal.fire({
             title: "Compra lograda exitosamente!",
@@ -204,6 +226,7 @@ const Formik = () => {
             <Select
               labelId="payment-method-label"
               id="payment-method"
+              name="metodoPago"
               value={selectedPayment}
               onChange={handlePaymentChange}
               label="Método de Pago"

@@ -73,6 +73,7 @@ const ItemListContainer = () => {
         items={productosBuscados}
         agregarAlCarrito={agregarAlCarrito}
         getQuantityById={getQuantityById}
+        categoryName={categoryName}
       />
     </>
   );

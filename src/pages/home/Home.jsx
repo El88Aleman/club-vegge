@@ -29,8 +29,8 @@ const Home = () => {
             <img
               src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737937483/Club%20Vegge/u35yba0kcacq2wexlg9q.png"
               alt="Bolson de Membresia"
-              height="300px"
-              width="300px"
+              height="250px"
+              width="250px"
               className="imgBolson"
             />
             <button className="button">COMPRAR BOLSON INDIVIDUAL</button>
@@ -41,8 +41,8 @@ const Home = () => {
             <img
               src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1738086649/Club%20Vegge/cjnz1iazlmxtfmib1zib.png"
               alt="Verduras Individuales"
-              height="150px"
-              width="300px"
+              height="100px"
+              width="250px"
               className="imgVerduras"
             />
             <button className="button">COMPRAR VERDURAS</button>
@@ -51,10 +51,10 @@ const Home = () => {
         <Link to="/category/frutas">
           <div className="containerFrutas">
             <img
-              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1738087074/Club%20Vegge/yfinjemj1fnmvsoxzd3l.png"
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1738636495/Club%20Vegge/vovrr8flvmq415kndhy7.png"
               alt="Frutas Individuales"
               height="175px"
-              width="300px"
+              width="250px"
               className="imgFrutas"
             />
             <button className="button">COMPRAR FRUTAS</button>

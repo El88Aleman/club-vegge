@@ -2,7 +2,12 @@ import "./ItemList.css";
 import "../../components/global/Global.css";
 import ProductCard from "../../components/common/productCard/ProductCard";
 import { Skeleton, Stack } from "@mui/material";
-const ItemList = ({ items, agregarAlCarrito, getQuantityById }) => {
+const ItemList = ({
+  items,
+  agregarAlCarrito,
+  getQuantityById,
+  categoryName,
+}) => {
   let arr = [1, 2, 3, 4];
   return (
     <>
@@ -13,6 +18,7 @@ const ItemList = ({ items, agregarAlCarrito, getQuantityById }) => {
               item={item}
               agregarAlCarrito={agregarAlCarrito}
               getQuantityById={getQuantityById}
+              categoryName={categoryName}
             />
           ))
         : arr.map((elemento) => (

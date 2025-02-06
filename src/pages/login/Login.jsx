@@ -1,5 +1,10 @@
 import "../../components/global/Global.css";
-import { TextField, IconButton, InputAdornment } from "@mui/material";
+import {
+  TextField,
+  IconButton,
+  InputAdornment,
+  CircularProgress,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "./Login.css";
 import { db, loginGoogle, logOut, onSigIn } from "../../firebaseConfig";
@@ -8,21 +13,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { handleLogin, logoutContext } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleClickPassword = () => setShowPassword(!showPassword);
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
   });
+
   const handleChange = (e) => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await onSigIn(userCredentials);
       if (res.user) {
@@ -37,17 +46,33 @@ const Login = () => {
         navigate("/home");
       }
     } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: "Error al iniciar sesión! Email o Contraseña incorrectos, revise y corrija los errores",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
+
   const googleSingIn = async () => {
-    let res = await loginGoogle();
-    let finalyUser = {
-      email: res.user.email,
-      rol: "user",
-    };
-    handleLogin(finalyUser);
-    navigate("/home");
+    setLoading(true); // Start loading
+    try {
+      let res = await loginGoogle();
+      let finalyUser = {
+        email: res.user.email,
+        rol: "user",
+      };
+      handleLogin(finalyUser);
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false); // Stop loading
+    }
   };
   const handleLogout = () => {
     logOut();
@@ -95,19 +120,34 @@ const Login = () => {
           ),
         }}
       />
-      <button className="googleButton" type="button" onClick={googleSingIn}>
-        <FaGoogle size={25} color="red" />
-        INICIAR SESION CON GOOGLE
-      </button>
-      <button className="button" type="submit">
-        INICIAR SESION
-      </button>
-      <Link to="/forgotPassword" className="linkButton">
-        OLVIDE MI CONTRASEÑA
-      </Link>
-      <button className="button" type="button" onClick={handleLogout}>
-        CERRAR SESION
-      </button>
+      {loading ? (
+        <CircularProgress
+          size={30}
+          color="success"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "30px",
+          }}
+        />
+      ) : (
+        <>
+          <button className="googleButton" type="button" onClick={googleSingIn}>
+            <FaGoogle size={25} color="red" />
+            INICIAR SESION CON GOOGLE
+          </button>
+          <button className="button" type="submit">
+            INICIAR SESION
+          </button>
+          <Link to="/forgotPassword" className="linkButton">
+            OLVIDE MI CONTRASEÑA
+          </Link>
+          <button className="button" type="button" onClick={handleLogout}>
+            CERRAR SESION
+          </button>
+        </>
+      )}
     </form>
   );
 };

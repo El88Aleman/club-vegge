@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-const useCounter = (initial = 0, maximo) => {
+const useCounter = (initial = 0, maximo, increment) => {
   const [counter, setCounter] = useState(initial);
   const sumar = () => {
-    counter < maximo && setCounter(counter + 0.5);
+    counter < maximo && setCounter(counter + increment);
   };
   const restar = () => {
-    counter > initial && setCounter(counter - 0.5);
+    counter > initial && setCounter(counter - increment);
   };
   const resetear = () => {
     setCounter(initial);

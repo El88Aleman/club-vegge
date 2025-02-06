@@ -55,8 +55,8 @@ const Dashboard = () => {
           <Link to="/home">
             <img
               src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737812866/Club%20Vegge/Club_Vegge_fbicie.png"
-              height="200px"
-              width="200px"
+              height="250px"
+              width="250px"
               alt=""
             />
           </Link>

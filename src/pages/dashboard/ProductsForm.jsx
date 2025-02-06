@@ -71,8 +71,21 @@ const ProductsForm = ({
           name="title"
           className="inputField"
           onChange={handleChange}
-          sx={{ minWidth: "70%" }}
+          sx={{ minWidth: "70%", fontFamily: "Sansation-Light" }}
         />
+        {(newProduct.category === "bolsones" ||
+          productSelected?.category === "bolsones") && (
+          <TextField
+            id="outlined-basic"
+            label="Descripción"
+            defaultValue={productSelected?.description}
+            variant="outlined"
+            name="description"
+            className="inputField"
+            onChange={handleChange}
+            sx={{ minWidth: "70%", fontFamily: "Sansation-Light" }}
+          />
+        )}
         <TextField
           id="outlined-basic"
           label="Precio"
@@ -81,7 +94,7 @@ const ProductsForm = ({
           name="unit_price"
           className="inputField"
           onChange={handleChange}
-          sx={{ minWidth: "70%" }}
+          sx={{ minWidth: "70%", fontFamily: "Sansation-Light" }}
         />
         <TextField
           id="outlined-basic"
@@ -91,7 +104,7 @@ const ProductsForm = ({
           name="stock"
           className="inputField"
           onChange={handleChange}
-          sx={{ minWidth: "70%" }}
+          sx={{ minWidth: "70%", fontFamily: "Sansation-Light" }}
         />
         <TextField
           id="outlined-basic"
@@ -101,7 +114,7 @@ const ProductsForm = ({
           name="category"
           className="inputField"
           onChange={handleChange}
-          sx={{ minWidth: "70%" }}
+          sx={{ minWidth: "70%", fontFamily: "Sansation-Light" }}
         />
         <Button
           variant="contained"

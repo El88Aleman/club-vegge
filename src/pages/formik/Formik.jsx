@@ -37,11 +37,7 @@ const Formik = () => {
   const createPreference = async (items, total) => {
     try {
       const response = await axios.post("/api/create_preference", {
-        items: items.map((item) => ({
-          title: item.title,
-          quantity: item.quantity,
-          unit_price: item.unit_price,
-        })),
+        items,
         total,
       });
       const { id } = response.data;

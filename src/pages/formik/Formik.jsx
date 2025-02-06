@@ -35,12 +35,20 @@ const Formik = () => {
     locale: "es-AR",
   });
   const createPreference = async () => {
+    const newArray = cart.map((product) => {
+      return {
+        title: product.title,
+        unit_price: product.unit_price,
+        quantity: product.quantity,
+      };
+    });
     try {
-      const response = await axios.post("/api/create_preference", {
-        title: "bananita contenta",
-        quantity: 1,
-        unit_price: 100,
-      });
+      const response = await axios.post(
+        "http://localhost3000/create_preference",
+        {
+          items: newArray,
+        }
+      );
       const { id } = response.data;
       return id;
     } catch (error) {

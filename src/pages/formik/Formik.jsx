@@ -36,10 +36,7 @@ const Formik = () => {
   });
   const createPreference = async () => {
     try {
-      const response = await axios.post(
-        "https://backend-club-vegge.vercel.app/create_preference",
-        cart
-      );
+      const response = await axios.post("/api/create_preference", cart);
       const { id } = response.data;
       return id;
     } catch (error) {

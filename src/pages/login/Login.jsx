@@ -82,7 +82,7 @@ const Login = () => {
   return (
     <form className="containerLogin" onSubmit={handleSubmit}>
       <img
-        src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737812866/Club%20Vegge/Club_Vegge_fbicie.png"
+        src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1739043306/Club%20Vegge/shrkwvazxk6yo9r0sjdt.png"
         alt="club vegge"
         height="250px"
         width="250px"

@@ -30,7 +30,7 @@ const ItemListContainer = () => {
         }
         const res = await getDocs(consulta);
         let arrayProductos = res.docs.map((product) => {
-          return { ...product.data(), id: product.id };
+          return { ...product.data(), id: product.id, categoryName };
         });
         setItems(arrayProductos);
       } catch (error) {

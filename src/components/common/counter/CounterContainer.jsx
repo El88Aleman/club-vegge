@@ -7,15 +7,12 @@ const CounterContainer = ({
   unit_price,
   categoryName,
 }) => {
-  const increment =
+  const initialQuantity =
     categoryName === "bolsones" || categoryName === "paquetes" ? 1 : 0.5;
-  const initialQuantity = increment;
-  const unit =
-    categoryName === "bolsones" || categoryName === "paquetes" ? "" : " KG";
-  const { counter, sumar, restar } = useCounter(
+  const { counter, sumar, restar, increment, unit } = useCounter(
     initialQuantity,
     stock,
-    increment
+    categoryName
   );
   return (
     <>

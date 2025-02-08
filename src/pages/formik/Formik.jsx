@@ -35,19 +35,10 @@ const Formik = () => {
     locale: "es-AR",
   });
   const createPreference = async () => {
-    const newArray = cart.map((product) => {
-      return {
-        title: product.title,
-        unit_price: product.unit_price,
-        quantity: product.quantity,
-      };
-    });
     try {
       const response = await axios.post(
         "https://backend-club-vegge.vercel.app/create_preference",
-        {
-          items: newArray,
-        }
+        cart
       );
       const { id } = response.data;
       return id;
@@ -98,7 +89,7 @@ const Formik = () => {
             (item) => `
             <hr>
           <p><strong>Título:</strong> ${item.title}</p>
-          <p><strong>Cantidad:</strong> ${item.quantity} KG</p>
+          <p><strong>Cantidad:</strong> ${item.quantity} UNIDAD/KG</p>
           <p><strong>Precio Unitario:</strong> $${item.unit_price}</p>
           <hr>
         `

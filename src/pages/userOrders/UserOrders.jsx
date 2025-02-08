@@ -49,7 +49,7 @@ const UserOrders = () => {
                     <strong>Producto:</strong> {item.title}
                   </p>
                   <p>
-                    <strong>Cantidad:</strong> {item.quantity} Kg
+                    <strong>Cantidad:</strong> {item.quantity} Unidad/Kg
                   </p>
                   <p>
                     <strong>Precio Unitario:</strong> ${item.unit_price}

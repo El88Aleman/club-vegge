@@ -21,6 +21,16 @@ const CartContainer = () => {
     setCounters(initialCounters);
   }, [cart]);
 
+  const getIncrement = (categoryName) => {
+    return categoryName === "bolsones" || categoryName === "paquetes" ? 1 : 0.5;
+  };
+
+  const getUnit = (categoryName) => {
+    return categoryName === "bolsones" || categoryName === "paquetes"
+      ? ""
+      : " KG";
+  };
+
   let limpiar = () => {
     Swal.fire({
       title: "Estas seguro de querer borrar todos los productos del carrito?",
@@ -65,7 +75,8 @@ const CartContainer = () => {
     }
   }, [cart, navigate]);
   const handleAdd = (item) => {
-    const newQuantity = counters[item.id] + 0.5;
+    const increment = getIncrement(item.categoryName);
+    const newQuantity = counters[item.id] + increment;
     if (newQuantity <= item.stock) {
       setCounters({ ...counters, [item.id]: newQuantity });
       addToCart({ ...item, quantity: newQuantity });
@@ -73,8 +84,9 @@ const CartContainer = () => {
   };
 
   const handleRemove = (item) => {
-    const newQuantity = counters[item.id] - 0.5;
-    if (newQuantity >= 0.5) {
+    const increment = getIncrement(item.categoryName);
+    const newQuantity = counters[item.id] - increment;
+    if (newQuantity >= increment) {
       setCounters({ ...counters, [item.id]: newQuantity });
       addToCart({ ...item, quantity: newQuantity });
     }
@@ -82,6 +94,8 @@ const CartContainer = () => {
   return (
     <>
       {cart.map((elemento) => {
+        const increment = getIncrement(elemento.categoryName);
+        const unit = getUnit(elemento.categoryName);
         return (
           <div key={elemento.id} className="cartContainerTarjet">
             <img src={elemento.img} height="70px" width="70px" alt="" />
@@ -95,12 +109,14 @@ const CartContainer = () => {
             >
               <button
                 className="buttonSumarRestar"
-                disabled={counters[elemento.id] <= 0.5}
+                disabled={counters[elemento.id] <= increment}
                 onClick={() => handleRemove(elemento)}
               >
                 <MdRemove size={15} />
               </button>
-              <p className="textoCheckOut">{counters[elemento.id]} KG</p>
+              <p className="textoCheckOut">
+                {counters[elemento.id]} {unit}
+              </p>
               <button
                 className="buttonSumarRestar"
                 disabled={counters[elemento.id] >= elemento.stock}
@@ -109,6 +125,9 @@ const CartContainer = () => {
                 <MdAdd size={15} />
               </button>
             </div>
+            {elemento.description && (
+              <p className="textoCheckOut">{elemento.description}</p>
+            )}
             <p className="textoCheckOut">
               ${elemento.unit_price * counters[elemento.id]}
             </p>

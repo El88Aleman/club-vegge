@@ -8,6 +8,7 @@ const Counter = ({
   restar,
   sumar,
   unit_price,
+  increment,
   unit,
 }) => {
   return (
@@ -21,7 +22,7 @@ const Counter = ({
       >
         <button
           className="buttonSumarRestar"
-          disabled={counter <= 0.5}
+          disabled={counter <= increment}
           onClick={restar}
         >
           <MdRemove size={15} />

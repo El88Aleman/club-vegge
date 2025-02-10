@@ -96,9 +96,19 @@ const CartContainer = () => {
       {cart.map((elemento) => {
         const increment = getIncrement(elemento.categoryName);
         const unit = getUnit(elemento.categoryName);
+        const scale = 2;
+        const height = parseFloat(elemento.height);
+        const width = parseFloat(elemento.width);
+        const scaledHeight = height / scale;
+        const scaledWidth = width / scale;
         return (
           <div key={elemento.id} className="cartContainerTarjet">
-            <img src={elemento.img} height="70px" width="70px" alt="" />
+            <img
+              src={elemento.img}
+              height={scaledHeight}
+              width={scaledWidth}
+              alt=""
+            />
             <p className="textoCheckOut">{elemento.title}</p>
             <div
               style={{

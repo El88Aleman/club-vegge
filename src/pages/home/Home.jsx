@@ -48,6 +48,18 @@ const Home = () => {
             <button className="button">COMPRAR VERDURAS</button>
           </div>
         </Link>
+        <Link to="/category/paquetes">
+          <div className="containerVerduras">
+            <img
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1739197899/Club%20Vegge/f5slvxhgf1psjq1pnxru.png"
+              alt="Verduras Individuales"
+              height="125px"
+              width="250px"
+              className="imgVerduras"
+            />
+            <button className="button">COMPRAR PAQUETES </button>
+          </div>
+        </Link>
         <Link to="/category/frutas">
           <div className="containerFrutas">
             <img

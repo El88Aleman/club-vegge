@@ -36,7 +36,12 @@ const Formik = () => {
   });
   const createPreference = async () => {
     try {
-      const response = await axios.post("/api/create_preference", cart);
+      const total = getTotalPrice();
+      const data = {
+        cart,
+        total,
+      };
+      const response = await axios.post("/api/create_preference", data);
       const { id } = response.data;
       return id;
     } catch (error) {

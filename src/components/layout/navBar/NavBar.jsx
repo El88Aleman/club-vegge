@@ -62,7 +62,13 @@ const NavBar = () => {
       </div>
       <div className="fixedIcons whatsapp">
         <div className="fixedIconContainer ">
-          <IoLogoWhatsapp size={25} color="#369a63" />
+          <a
+            href="https://api.whatsapp.com/send?phone=+3424486975&text=Hola%20Club%20Vegge!%20Necesito%20ayuda%20con.."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoWhatsapp size={25} color="#369a63" />
+          </a>
         </div>
       </div>
       <div className="fixedIcons cart-widget">

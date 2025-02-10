@@ -50,7 +50,7 @@ const Membresia = () => {
         semana
       </h2>
       <a
-        href="https://api.whatsapp.com/send?phone=+3425220425&text=Hola%20Club%20Vegge!%20Estoy%20interesado%20en%20la%20membres%C3%ADa%20mensual..."
+        href="https://api.whatsapp.com/send?phone=+3424486975&text=Hola%20Club%20Vegge!%20Estoy%20interesado%20en%20la%20membres%C3%ADa%20mensual..."
         className="whatsappButton"
         target="_blank"
         rel="noopener noreferrer"

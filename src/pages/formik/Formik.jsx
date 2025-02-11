@@ -7,9 +7,10 @@ import {
   Select,
   InputLabel,
   FormControl,
+  CircularProgress,
 } from "@mui/material";
 import "./Formik.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { db } from "../../firebaseConfig";
 import {
   addDoc,
@@ -30,10 +31,17 @@ const Formik = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const [preferenceId, setPreferenceId] = useState(null);
   const { user, fetchOrders } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const publicKey = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
+    if (publicKey) {
+      initMercadoPago(publicKey, {
+        locale: "es-AR",
+      });
+    }
+    setLoading(false);
+  }, []);
 
-  initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY, {
-    locale: "es-AR",
-  });
   const createPreference = async () => {
     try {
       const total = getTotalPrice();
@@ -160,7 +168,18 @@ const Formik = () => {
   });
   return (
     <>
-      {preferenceId && selectedPayment === "MercadoPago" ? (
+      {loading ? (
+        <CircularProgress
+          size={30}
+          color="success"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "30px",
+          }}
+        />
+      ) : preferenceId && selectedPayment === "MercadoPago" ? (
         <div>
           <Wallet
             initialization={{

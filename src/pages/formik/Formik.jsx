@@ -46,13 +46,18 @@ const Formik = () => {
       };
     });
     try {
-      const response = await axios.post("/api/create_preference", {
-        items: newArray,
-      });
+      const response = await axios.post(
+        "https://backend-club-vegge.vercel.app/create_preference",
+        {
+          items: newArray,
+        }
+      );
       const { id } = response.data;
       return id;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false); // Asegurarse de detener el loading después de la solicitud
     }
   };
   const handleBuy = async () => {
@@ -251,7 +256,6 @@ const Formik = () => {
                 Efectivo
               </MenuItem>
               <MenuItem
-                onClick={handleBuy}
                 sx={{ fontFamily: "Sansation-light" }}
                 value="MercadoPago"
               >

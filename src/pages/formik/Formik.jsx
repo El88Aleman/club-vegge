@@ -10,7 +10,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import "./Formik.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { db } from "../../firebaseConfig";
 import {
   addDoc,
@@ -31,25 +31,29 @@ const Formik = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const [preferenceId, setPreferenceId] = useState(null);
   const { user, fetchOrders } = useContext(AuthContext);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const publicKey = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
-    if (publicKey) {
-      initMercadoPago(publicKey, {
-        locale: "es-AR",
-      });
-    }
-    setLoading(false);
-  }, []);
+  const [loading, setLoading] = useState(false);
 
+  initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY, {
+    locale: "es-AR",
+  });
   const createPreference = async () => {
-    try {
-      const total = getTotalPrice();
-      const data = {
-        cart,
-        total,
+    setLoading(true);
+    const newArray = cart.map((product) => {
+      return {
+        title: product.title,
+        unit_price: product.unit_price,
+        quantity: product.quantity,
       };
-      const response = await axios.post("/api/create_preference", data);
+    });
+    try {
+      const response = await axios.post(
+        "https://backend-club-vegge.vercel.app/create_preference",
+        {
+          title: newArray[0].title,
+          quantity: newArray[0].quantity,
+          unit_price: newArray[0].unit_price,
+        }
+      );
       const { id } = response.data;
       return id;
     } catch (error) {

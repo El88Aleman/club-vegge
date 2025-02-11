@@ -46,14 +46,9 @@ const Formik = () => {
       };
     });
     try {
-      const response = await axios.post(
-        "https://backend-club-vegge.vercel.app/create_preference",
-        {
-          title: newArray[0].title,
-          quantity: newArray[0].quantity,
-          unit_price: newArray[0].unit_price,
-        }
-      );
+      const response = await axios.post("/api/create_preference", {
+        items: newArray,
+      });
       const { id } = response.data;
       return id;
     } catch (error) {

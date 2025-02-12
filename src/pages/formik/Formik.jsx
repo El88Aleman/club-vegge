@@ -185,7 +185,7 @@ const Formik = () => {
           }}
         />
       ) : preferenceId && selectedPayment === "MercadoPago" ? (
-        <div>
+        <div style={{ margin: "20px" }}>
           <Wallet
             initialization={{
               preferenceId,

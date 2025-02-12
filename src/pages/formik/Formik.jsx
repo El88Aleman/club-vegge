@@ -135,7 +135,7 @@ const Formik = () => {
             navigate("/userOrders");
           });
         } else if (selectedPayment === "MercadoPago") {
-          await handleBuy();
+          await handleBuy(); // Este es un comentario para forzar un nuevo despliegue
         } else if (selectedPayment === "Transferencia") {
           navigate("/transferencia");
         }

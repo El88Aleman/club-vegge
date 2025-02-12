@@ -9,17 +9,26 @@ import CartWidget from "../../common/cartWidget/CartWidget";
 import { Badge } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
+import UseIntersectionObserver from "../../useIntersectionObserver/UseIntersectionObserver";
 
 const NavBar = () => {
   const { user, getTotalOrders } = useContext(AuthContext);
   const rolAdmin = import.meta.env.VITE_ROL_ADMIN;
   const totalOrders = getTotalOrders();
+  const [visibleElements, setRef] = UseIntersectionObserver({
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
-    <div>
-      <div className="navContainer">
+    <div ref={setRef(0)} data-id="navBar">
+      <div
+        className={`navContainer ${
+          visibleElements.navBar ? "visible" : "hidden"
+        }`}
+      >
         <Link to="/home">
           <img
             src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1739043306/Club%20Vegge/shrkwvazxk6yo9r0sjdt.png"

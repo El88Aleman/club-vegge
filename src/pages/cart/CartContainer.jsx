@@ -6,11 +6,16 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MdRemove } from "react-icons/md";
 import { MdAdd } from "react-icons/md";
+import UseIntersectionObserver from "../../components/useIntersectionObserver/UseIntersectionObserver";
 
 const CartContainer = () => {
   const { cart, clearCart, deleteById, getTotalPrice, addToCart } =
     useContext(CartContext);
   const [counters, setCounters] = useState({});
+  const [visibleElements, setRef] = UseIntersectionObserver({
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   let total = getTotalPrice();
   const navigate = useNavigate();
   useEffect(() => {
@@ -93,7 +98,7 @@ const CartContainer = () => {
   };
   return (
     <>
-      {cart.map((elemento) => {
+      {cart.map((elemento, index) => {
         const increment = getIncrement(elemento.categoryName);
         const unit = getUnit(elemento.categoryName);
         const scale = 2;
@@ -102,7 +107,14 @@ const CartContainer = () => {
         const scaledHeight = height / scale;
         const scaledWidth = width / scale;
         return (
-          <div key={elemento.id} className="cartContainerTarjet">
+          <div
+            key={elemento.id}
+            ref={setRef(index)}
+            data-id={`section${index}`}
+            className={`cartContainerTarjet section ${
+              visibleElements[`section${index}`] ? "visible" : "hidden"
+            }`}
+          >
             <img
               src={elemento.img}
               height={scaledHeight}
@@ -148,7 +160,13 @@ const CartContainer = () => {
         );
       })}
 
-      <div className="containerButtonCarrito">
+      <div
+        ref={setRef(cart.length)}
+        data-id={`section${cart.length}`}
+        className={`containerButtonCarrito section ${
+          visibleElements[`section${cart.length}`] ? "visible" : "hidden"
+        }`}
+      >
         {cart.length > 0 && (
           <>
             <p className="textoCheckOut">El total del carrito es: ${total}</p>

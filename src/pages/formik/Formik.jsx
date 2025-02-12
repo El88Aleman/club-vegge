@@ -52,6 +52,7 @@ const Formik = () => {
           items: newArray,
         }
       );
+      console.log("Respuesta del backend:", response.data);
       const { id } = response.data;
       return id;
     } catch (error) {

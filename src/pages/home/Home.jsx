@@ -1,11 +1,22 @@
 import "./Home.css";
 import "../../components/global/Global.css";
 import { Link } from "react-router-dom";
+import useIntersectionObserver from "../../components/useIntersectionObserver/UseIntersectionObserver";
 
 const Home = () => {
+  const [visibleElements, setRef] = useIntersectionObserver({
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
     <>
-      <div className="burbujaChat">
+      <div
+        ref={setRef(0)}
+        data-id="burbuja"
+        className={`burbujaChat ${
+          visibleElements.burbuja ? "visible" : "hidden"
+        }`}
+      >
         <p className="textBurbuja">
           Somos <strong>CLUB VEGGE</strong>! Un emprendimiento que lleva lo
           mejor de frutas y verduras directamente a la puerta de su casa
@@ -14,7 +25,13 @@ const Home = () => {
         </p>
         <div className="pinche"></div>
       </div>
-      <div className="containerMembresia">
+      <div
+        ref={setRef(1)}
+        data-id="membresia"
+        className={`containerMembresia ${
+          visibleElements.membresia ? "visible" : "hidden"
+        }`}
+      >
         <p className="textMembresia">
           Ofrecemos una <strong>Membresia Mensual</strong>! Haz click para
           obtener mas informacion sobre este beneficio
@@ -23,7 +40,13 @@ const Home = () => {
           <button className="button">MEMBRESIA MENSUAL</button>
         </Link>
       </div>
-      <div className="containerCompras">
+      <div
+        ref={setRef(2)}
+        data-id="compras"
+        className={`containerCompras ${
+          visibleElements.compras ? "visible" : "hidden"
+        }`}
+      >
         <Link to="/category/bolsones">
           <div className="containerBolson">
             <img
@@ -37,7 +60,13 @@ const Home = () => {
           </div>
         </Link>
         <Link to="/category/verduras">
-          <div className="containerVerduras">
+          <div
+            ref={setRef(3)}
+            data-id="verduras"
+            className={`containerVerduras ${
+              visibleElements.verduras ? "visible" : "hidden"
+            }`}
+          >
             <img
               src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1738086649/Club%20Vegge/cjnz1iazlmxtfmib1zib.png"
               alt="Verduras Individuales"
@@ -49,7 +78,13 @@ const Home = () => {
           </div>
         </Link>
         <Link to="/category/paquetes">
-          <div className="containerVerduras">
+          <div
+            ref={setRef(4)}
+            data-id="paquetes"
+            className={`containerVerduras ${
+              visibleElements.paquetes ? "visible" : "hidden"
+            }`}
+          >
             <img
               src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1739197899/Club%20Vegge/f5slvxhgf1psjq1pnxru.png"
               alt="Verduras Individuales"
@@ -61,7 +96,13 @@ const Home = () => {
           </div>
         </Link>
         <Link to="/category/frutas">
-          <div className="containerFrutas">
+          <div
+            ref={setRef(5)}
+            data-id="frutas"
+            className={`containerFrutas ${
+              visibleElements.frutas ? "visible" : "hidden"
+            }`}
+          >
             <img
               src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1738636495/Club%20Vegge/vovrr8flvmq415kndhy7.png"
               alt="Frutas Individuales"

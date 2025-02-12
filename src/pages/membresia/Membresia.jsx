@@ -1,9 +1,18 @@
+import UseIntersectionObserver from "../../components/useIntersectionObserver/UseIntersectionObserver";
 import "./Membresia.css";
 import { FaWhatsapp } from "react-icons/fa";
 const Membresia = () => {
+  const [visibleElements, setRef] = UseIntersectionObserver({
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
     <div className="containerMembresia">
-      <div>
+      <div
+        ref={setRef(0)}
+        data-id="section1"
+        className={`section ${visibleElements.section1 ? "visible" : "hidden"}`}
+      >
         <h1 className="titleMembresia">
           Bienvenidos a la sección de membresía de Club Vegge 🌿
         </h1>
@@ -14,7 +23,11 @@ const Membresia = () => {
           la puerta de tu hogar
         </p>
       </div>
-      <div>
+      <div
+        ref={setRef(1)}
+        data-id="section2"
+        className={`section ${visibleElements.section2 ? "visible" : "hidden"}`}
+      >
         <h2 className="titleMembresia">🥕 ¿Cómo funciona?</h2>
         <p className="parrafosMembresia">
           ✅ <strong>Entrega semanal:</strong> Recibe un bolsón con frutas y
@@ -30,7 +43,11 @@ const Membresia = () => {
           entrega
         </p>
       </div>
-      <div>
+      <div
+        ref={setRef(2)}
+        data-id="section3"
+        className={`section ${visibleElements.section3 ? "visible" : "hidden"}`}
+      >
         <h2 className="titleMembresia">
           🎁 Beneficios exclusivos para miembros:
         </h2>

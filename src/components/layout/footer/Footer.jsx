@@ -1,11 +1,22 @@
 import { FaRegCopyright } from "react-icons/fa6";
 import FyB from "../../../assets/fotos/FyB.gif";
 import "./Footer.css";
+import UseIntersectionObserver from "../../useIntersectionObserver/UseIntersectionObserver";
 
 const Footer = () => {
+  const [visibleElements, setRef] = UseIntersectionObserver({
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
     <>
-      <div className="containerFooter">
+      <div
+        ref={setRef(0)}
+        data-id="footer"
+        className={`containerFooter ${
+          visibleElements.footer ? "visible" : "hidden"
+        }`}
+      >
         <img
           src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1739043306/Club%20Vegge/shrkwvazxk6yo9r0sjdt.png"
           alt=""

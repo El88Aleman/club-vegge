@@ -1,3 +1,4 @@
+import UseIntersectionObserver from "../../useIntersectionObserver/UseIntersectionObserver";
 import CounterContainer from "../counter/CounterContainer";
 
 const ProductCard = ({
@@ -6,8 +7,18 @@ const ProductCard = ({
   getQuantityById,
   categoryName,
 }) => {
+  const [visibleElements, setRef] = UseIntersectionObserver({
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
-    <div className="itemListContainer">
+    <div
+      ref={setRef(0)}
+      data-id="section1"
+      className={`itemListContainer section ${
+        visibleElements.section1 ? "visible" : "hidden"
+      }`}
+    >
       <img
         src={item.img}
         alt={item.title}

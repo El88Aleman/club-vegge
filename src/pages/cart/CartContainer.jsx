@@ -62,7 +62,7 @@ const CartContainer = () => {
   };
 
   const handleFormik = () => {
-    if (total >= 0) {
+    if (total >= 2500) {
       navigate("/formik");
     } else {
       Swal.fire({

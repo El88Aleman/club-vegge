@@ -121,16 +121,18 @@ const Login = () => {
         }}
       />
       {loading ? (
-        <CircularProgress
-          size={30}
-          color="success"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "30px",
-          }}
-        />
+        <div className="loader">
+          <CircularProgress
+            size={30}
+            color="success"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "30px",
+            }}
+          />
+        </div>
       ) : (
         <>
           <button className="googleButton" type="button" onClick={googleSingIn}>

@@ -174,16 +174,9 @@ const Formik = () => {
   return (
     <>
       {loading ? (
-        <CircularProgress
-          size={30}
-          color="success"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "30px",
-          }}
-        />
+        <div className="loader">
+          <CircularProgress size={30} color="success" />
+        </div>
       ) : preferenceId && selectedPayment === "MercadoPago" ? (
         <div style={{ margin: "20px" }}>
           <Wallet

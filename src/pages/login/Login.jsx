@@ -1,10 +1,5 @@
 import "../../components/global/Global.css";
-import {
-  TextField,
-  IconButton,
-  InputAdornment,
-  CircularProgress,
-} from "@mui/material";
+import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "./Login.css";
 import { db, loginGoogle, logOut, onSigIn } from "../../firebaseConfig";
@@ -14,6 +9,7 @@ import { collection, doc, getDoc } from "firebase/firestore";
 import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Loader from "../../components/loader/Loader";
 
 const Login = () => {
   const { handleLogin, logoutContext } = useContext(AuthContext);
@@ -122,16 +118,7 @@ const Login = () => {
       />
       {loading ? (
         <div className="loader">
-          <CircularProgress
-            size={30}
-            color="success"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "30px",
-            }}
-          />
+          <Loader />
         </div>
       ) : (
         <>

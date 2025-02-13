@@ -7,7 +7,6 @@ import {
   Select,
   InputLabel,
   FormControl,
-  CircularProgress,
 } from "@mui/material";
 import "./Formik.css";
 import { useContext, useState } from "react";
@@ -27,6 +26,7 @@ import "./Formik.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import sendCustomEmail from "./sendCustomEmail";
+import Loader from "../../components/loader/Loader";
 const Formik = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const [preferenceId, setPreferenceId] = useState(null);
@@ -174,9 +174,7 @@ const Formik = () => {
   return (
     <>
       {loading ? (
-        <div className="loader">
-          <CircularProgress size={30} color="success" />
-        </div>
+        <Loader />
       ) : preferenceId && selectedPayment === "MercadoPago" ? (
         <div style={{ margin: "20px" }}>
           <Wallet

@@ -8,7 +8,11 @@ const CounterContainer = ({
   categoryName,
 }) => {
   const initialQuantity =
-    categoryName === "bolsones" || categoryName === "paquetes" ? 1 : 0.5;
+    stock === 0
+      ? 0
+      : categoryName === "bolsones" || categoryName === "paquetes"
+      ? 1
+      : 0.5;
   const { counter, sumar, restar, increment, unit } = useCounter(
     initialQuantity,
     stock,

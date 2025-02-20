@@ -26,6 +26,44 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+const promoStyle = {
+  position: "absolute",
+  top: "-10px",
+  left: "-70px",
+  backgroundColor: "#369a63",
+  color: "white",
+  padding: "40px",
+  fontSize: "12px",
+  fontWeight: "bold",
+  borderRadius: "50%",
+  zIndex: 1,
+  fontFamily: "Sansation-Regular",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  width: "40px",
+  height: "40px",
+};
+const agotadoStyle = {
+  position: "absolute",
+  top: "-10px",
+  left: "-90px",
+  backgroundColor: "red",
+  color: "white",
+  padding: "40px",
+  fontSize: "12px",
+  fontWeight: "bold",
+  borderRadius: "50%",
+  zIndex: 1,
+  fontFamily: "Sansation-Regular",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  width: "40px",
+  height: "40px",
+};
 const ProductList = ({ products, setIsChange }) => {
   const [open, setOpen] = useState(false);
   const [productSelected, setProductSelected] = useState(null);
@@ -71,7 +109,10 @@ const ProductList = ({ products, setIsChange }) => {
               <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
                 Precio
               </TableCell>
-              <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
+              <TableCell
+                align="center"
+                sx={{ fontFamily: "Sansation-light", minWidth: "300px" }}
+              >
                 Stock
               </TableCell>
               <TableCell align="center" sx={{ fontFamily: "Sansation-light" }}>
@@ -111,7 +152,7 @@ const ProductList = ({ products, setIsChange }) => {
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ fontFamily: "Sansation-light" }}
+                  sx={{ fontFamily: "Sansation-light", minWidth: "300px" }}
                 >
                   {product.stock}
                 </TableCell>
@@ -119,12 +160,20 @@ const ProductList = ({ products, setIsChange }) => {
                   align="center"
                   sx={{ fontFamily: "Sansation-light" }}
                 >
-                  <img
-                    src={product.img}
-                    height={product.height}
-                    width={product.width}
-                    alt="imagen dashboard"
-                  />
+                  <div style={{ position: "relative" }}>
+                    {product.promo === "si" && (
+                      <div style={promoStyle}>OFERTA SEMANAL</div>
+                    )}
+                    {product.stock === 0 && (
+                      <div style={agotadoStyle}>AGOTADO</div>
+                    )}
+                    <img
+                      src={product.img}
+                      height={product.height}
+                      width={product.width}
+                      alt="imagen dashboard"
+                    />
+                  </div>
                 </TableCell>
                 <TableCell
                   align="center"

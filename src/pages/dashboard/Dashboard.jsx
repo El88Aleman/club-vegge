@@ -54,7 +54,7 @@ const Dashboard = () => {
         <div className="imgClubVeggeDash">
           <Link to="/home">
             <img
-              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1737812866/Club%20Vegge/Club_Vegge_fbicie.png"
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1739043306/Club%20Vegge/shrkwvazxk6yo9r0sjdt.png"
               height="250px"
               width="250px"
               alt=""

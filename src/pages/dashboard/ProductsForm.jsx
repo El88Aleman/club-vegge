@@ -1,4 +1,11 @@
-import { Button, TextField } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../../firebaseConfig";
@@ -14,6 +21,7 @@ const ProductsForm = ({
     unit_price: 0,
     stock: 0,
     category: "",
+    promo: "no",
   });
   const handleChange = (e) => {
     if (productSelected) {
@@ -116,6 +124,28 @@ const ProductsForm = ({
           onChange={handleChange}
           sx={{ minWidth: "70%", fontFamily: "Sansation-Light" }}
         />
+        <FormControl
+          variant="outlined"
+          className="inputField"
+          sx={{ minWidth: "70%" }}
+        >
+          <InputLabel id="payment-method-label">Promocion</InputLabel>
+          <Select
+            labelId="promocion-label"
+            id="promocion"
+            name="promo"
+            value={productSelected?.promo || newProduct.promo}
+            onChange={handleChange}
+            label="Promoción"
+          >
+            <MenuItem sx={{ fontFamily: "Sansation-light" }} value="si">
+              Si
+            </MenuItem>
+            <MenuItem sx={{ fontFamily: "Sansation-light" }} value="no">
+              No
+            </MenuItem>
+          </Select>
+        </FormControl>
         <Button
           variant="contained"
           color="primary"

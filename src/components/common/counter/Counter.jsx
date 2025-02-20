@@ -39,7 +39,11 @@ const Counter = ({
         </button>
       </div>
       <p className="textoCheckOut">${unit_price * counter}</p>
-      <button className="button" onClick={() => agregarAlCarrito(counter)}>
+      <button
+        className="button"
+        onClick={() => agregarAlCarrito(counter)}
+        disabled={stock === 0}
+      >
         AGREGAR AL CARRITO
       </button>
     </div>

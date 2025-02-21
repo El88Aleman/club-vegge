@@ -38,11 +38,14 @@ const Formik = () => {
   });
   const createPreference = async () => {
     setLoading(true);
+    const factor = 1000;
     const newArray = cart.map((product) => {
+      const adjustedQuantity = Math.round(product.quantity * factor);
+      const adjustedUnitPrice = product.unit_price / factor;
       return {
         title: product.title,
-        unit_price: product.unit_price,
-        quantity: product.quantity,
+        unit_price: adjustedUnitPrice,
+        quantity: adjustedQuantity,
       };
     });
     try {

@@ -54,12 +54,14 @@
 }
 .imgBolson,
 .imgVerduras,
-.imgFrutas {
+.imgFrutas,
+.imgHuevos {
   margin: 10px;
 }
 .containerBolson,
 .containerVerduras,
-.containerFrutas {
+.containerFrutas,
+.containerHuevos {
   display: flex;
   flex-direction: column;
   justify-content: center;

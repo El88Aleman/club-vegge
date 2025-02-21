@@ -5,7 +5,11 @@ const useCounter = (initial = 0, maximo, categoryName) => {
   const [increment, setIncrement] = useState(0.5);
   const [unit, setUnit] = useState(" KG");
   useEffect(() => {
-    if (categoryName === "bolsones" || categoryName === "paquetes") {
+    if (
+      categoryName === "bolsones" ||
+      categoryName === "paquetes" ||
+      categoryName === "huevos"
+    ) {
       setIncrement(1);
       setUnit("");
     } else {

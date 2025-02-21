@@ -27,11 +27,17 @@ const CartContainer = () => {
   }, [cart]);
 
   const getIncrement = (categoryName) => {
-    return categoryName === "bolsones" || categoryName === "paquetes" ? 1 : 0.5;
+    return categoryName === "bolsones" ||
+      categoryName === "paquetes" ||
+      categoryName === "huevos"
+      ? 1
+      : 0.5;
   };
 
   const getUnit = (categoryName) => {
-    return categoryName === "bolsones" || categoryName === "paquetes"
+    return categoryName === "bolsones" ||
+      categoryName === "paquetes" ||
+      categoryName === "huevos"
       ? ""
       : " KG";
   };

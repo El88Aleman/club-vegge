@@ -113,6 +113,24 @@ const Home = () => {
             <button className="button">COMPRAR FRUTAS</button>
           </div>
         </Link>
+        <Link to="/category/huevos">
+          <div
+            ref={setRef(6)}
+            data-id="huevos"
+            className={`containerHuevos ${
+              visibleElements.huevos ? "visible" : "hidden"
+            }`}
+          >
+            <img
+              src="https://res.cloudinary.com/dfcnmxndf/image/upload/v1740105320/Club%20Vegge/erpaj1afbxwexboedbty.png"
+              alt="Maple de Huevos"
+              height="125px"
+              width="250px"
+              className="imgHuevos"
+            />
+            <button className="button">COMPRAR HUEVOS</button>
+          </div>
+        </Link>
       </div>
     </>
   );

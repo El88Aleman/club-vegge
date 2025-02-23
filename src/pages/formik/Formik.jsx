@@ -91,7 +91,6 @@ const Formik = () => {
         total,
         paymentMethod: selectedPayment,
         date: serverTimestamp(),
-        enCasa: data.enCasa,
       };
       localStorage.setItem("order", JSON.stringify(order));
       let ordersCollections = collection(db, "orders");
@@ -120,7 +119,7 @@ const Formik = () => {
           <p><strong>Apellido:</strong> ${order.buyer.apellido}</p>
           <p><strong>Dirección:</strong> ${order.buyer.direccion}</p>
           <p><strong>Teléfono:</strong> ${order.buyer.telefono}</p>
-          <p><strong>Estás en casa:</strong> ${order.enCasa}</p>
+          <p><strong>Estás en casa:</strong> ${data.enCasa}</p>
            <p><strong>Productos:</strong> ${formattedItems}</p>
           <p><strong>Total:</strong> $${order.total}</p>
           <p><strong>Método de Pago:</strong> ${order.paymentMethod}</p>

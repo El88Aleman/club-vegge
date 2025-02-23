@@ -240,7 +240,9 @@ const Formik = () => {
             className="inputField"
             sx={{ minWidth: "70%" }}
           >
-            <InputLabel id="enCasa-label">¿Está en casa?</InputLabel>
+            <InputLabel id="enCasa-label">
+              ¿Estás en casa ahora mismo?
+            </InputLabel>
             <Select
               labelId="enCasa-label"
               id="enCasa"

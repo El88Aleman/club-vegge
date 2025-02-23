@@ -76,12 +76,13 @@ const Formik = () => {
   const handlePaymentChange = (event) => {
     setSelectedPayment(event.target.value);
   };
-  const { handleSubmit, handleChange, errors } = useFormik({
+  const { handleSubmit, handleChange, values, errors } = useFormik({
     initialValues: {
       nombre: "",
       apellido: "",
       direccion: "",
       telefono: "",
+      enCasa: "",
     },
     onSubmit: async (data) => {
       let order = {
@@ -90,6 +91,7 @@ const Formik = () => {
         total,
         paymentMethod: selectedPayment,
         date: serverTimestamp(),
+        enCasa: data.enCasa,
       };
       localStorage.setItem("order", JSON.stringify(order));
       let ordersCollections = collection(db, "orders");
@@ -118,6 +120,7 @@ const Formik = () => {
           <p><strong>Apellido:</strong> ${order.buyer.apellido}</p>
           <p><strong>Dirección:</strong> ${order.buyer.direccion}</p>
           <p><strong>Teléfono:</strong> ${order.buyer.telefono}</p>
+          <p><strong>Estás en casa:</strong> ${order.enCasa}</p>
            <p><strong>Productos:</strong> ${formattedItems}</p>
           <p><strong>Total:</strong> $${order.total}</p>
           <p><strong>Método de Pago:</strong> ${order.paymentMethod}</p>
@@ -233,6 +236,28 @@ const Formik = () => {
             className="inputField"
             sx={{ minWidth: "70%" }}
           />
+          <FormControl
+            variant="outlined"
+            className="inputField"
+            sx={{ minWidth: "70%" }}
+          >
+            <InputLabel id="enCasa-label">¿Está en casa?</InputLabel>
+            <Select
+              labelId="enCasa-label"
+              id="enCasa"
+              name="enCasa"
+              value={values.enCasa}
+              onChange={handleChange}
+              label="¿Está en casa?"
+            >
+              <MenuItem sx={{ fontFamily: "Sansation-light" }} value="Sí">
+                Sí
+              </MenuItem>
+              <MenuItem sx={{ fontFamily: "Sansation-light" }} value="No">
+                No
+              </MenuItem>
+            </Select>
+          </FormControl>
           <FormControl
             variant="outlined"
             className="inputField"

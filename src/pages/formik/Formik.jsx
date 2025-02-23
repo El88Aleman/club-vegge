@@ -119,7 +119,7 @@ const Formik = () => {
           <p><strong>Apellido:</strong> ${order.buyer.apellido}</p>
           <p><strong>Dirección:</strong> ${order.buyer.direccion}</p>
           <p><strong>Teléfono:</strong> ${order.buyer.telefono}</p>
-          <p><strong>Estás en casa:</strong> ${data.enCasa}</p>
+          <p><strong>El cliente esta en su casa ahora?:</strong> ${data.enCasa}</p>
            <p><strong>Productos:</strong> ${formattedItems}</p>
           <p><strong>Total:</strong> $${order.total}</p>
           <p><strong>Método de Pago:</strong> ${order.paymentMethod}</p>
@@ -247,7 +247,7 @@ const Formik = () => {
               name="enCasa"
               value={values.enCasa}
               onChange={handleChange}
-              label="¿Está en casa?"
+              label="¿Estás en casa ahora mismo?"
             >
               <MenuItem sx={{ fontFamily: "Sansation-light" }} value="Sí">
                 Sí

@@ -21,27 +21,15 @@ const Home = () => {
           Somos <strong>CLUB VEGGE</strong>! Un emprendimiento que lleva lo
           mejor de frutas y verduras directamente a la puerta de su casa
           <strong> sin cargo de envio </strong> a partir de
-          <strong> $2500</strong> 🚪🚀
+          <strong> $2500</strong> 🚪🚀 <br />
+          🕒
+          <strong> Horarios de entrega: </strong>
+          De lunes a viernes de <strong>9:00 a 18:00 hs</strong>
         </p>
         <div className="pinche"></div>
       </div>
       <div
         ref={setRef(1)}
-        data-id="membresia"
-        className={`containerMembresia ${
-          visibleElements.membresia ? "visible" : "hidden"
-        }`}
-      >
-        <p className="textMembresia">
-          Ofrecemos una <strong>Membresia Mensual</strong>! Haz click para
-          obtener mas informacion sobre este beneficio
-        </p>
-        <Link to="/membresia">
-          <button className="button">MEMBRESIA MENSUAL</button>
-        </Link>
-      </div>
-      <div
-        ref={setRef(2)}
         data-id="compras"
         className={`containerCompras ${
           visibleElements.compras ? "visible" : "hidden"
@@ -61,7 +49,7 @@ const Home = () => {
         </Link>
         <Link to="/category/verduras">
           <div
-            ref={setRef(3)}
+            ref={setRef(2)}
             data-id="verduras"
             className={`containerVerduras ${
               visibleElements.verduras ? "visible" : "hidden"
@@ -79,7 +67,7 @@ const Home = () => {
         </Link>
         <Link to="/category/paquetes">
           <div
-            ref={setRef(4)}
+            ref={setRef(3)}
             data-id="paquetes"
             className={`containerVerduras ${
               visibleElements.paquetes ? "visible" : "hidden"
@@ -97,7 +85,7 @@ const Home = () => {
         </Link>
         <Link to="/category/frutas">
           <div
-            ref={setRef(5)}
+            ref={setRef(4)}
             data-id="frutas"
             className={`containerFrutas ${
               visibleElements.frutas ? "visible" : "hidden"
@@ -115,7 +103,7 @@ const Home = () => {
         </Link>
         <Link to="/category/huevos">
           <div
-            ref={setRef(6)}
+            ref={setRef(5)}
             data-id="huevos"
             className={`containerHuevos ${
               visibleElements.huevos ? "visible" : "hidden"

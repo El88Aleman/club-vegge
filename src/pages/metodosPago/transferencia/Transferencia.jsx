@@ -2,8 +2,8 @@ import Swal from "sweetalert2";
 import "./Transferencia.css";
 import { useNavigate } from "react-router-dom";
 const Transferencia = () => {
-  const alias = "negocio.vegge";
-  const cbu = "1234567890123456789012";
+  const alias = "clubvegge.mp";
+  const cbu = "0000003100068320419678";
   const navigate = useNavigate();
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);

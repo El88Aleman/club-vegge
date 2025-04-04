@@ -21,7 +21,7 @@ const Home = () => {
           Somos <strong>CLUB VEGGE</strong>! Un emprendimiento que lleva lo
           mejor de frutas y verduras directamente a la puerta de su casa
           <strong> sin cargo de envio </strong> a partir de
-          <strong> $2500</strong> 🚪🚀 <br />
+          <strong> $2500</strong> 🚀🚪 <br />
           🕒
           <strong> Horarios de entrega: </strong>
           De lunes a viernes de <strong>9:00 a 18:00 hs</strong>
